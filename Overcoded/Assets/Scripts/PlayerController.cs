@@ -10,10 +10,17 @@ using UnityEngine.AI;
 
 public class PlayerController : MonoBehaviour
 {
+    public Vector3 velocity;
+
     NavMeshAgent agent;
+    Rigidbody rb;
+    SpriteRenderer carrying;
+
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        rb = GetComponent<Rigidbody>();
+        carrying = GetComponentInChildren<SpriteRenderer>();
     }
 
     void Update()
@@ -26,6 +33,14 @@ public class PlayerController : MonoBehaviour
             {
                 agent.destination = hit.point;
             }
+        }
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Resource")
+        {
+            carrying.sprite = other.gameObject.GetComponentInChildren<SpriteRenderer>().sprite;
         }
     }
 }
