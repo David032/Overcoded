@@ -14,13 +14,12 @@ public class PlayerController : MonoBehaviour
 
     NavMeshAgent agent;
     Rigidbody rb;
-    SpriteRenderer carrying;
+    public SpriteRenderer carrying; //This has to be manually set as doing it via GetComponentInChildren gets the player's spriterenderer
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        rb = GetComponent<Rigidbody>();
-        carrying = GetComponentInChildren<SpriteRenderer>();
+        rb = GetComponent<Rigidbody>();     
     }
 
     void Update()
