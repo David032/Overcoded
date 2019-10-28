@@ -37,7 +37,14 @@ public class ProcessResource : MonoBehaviour
             }
             else
             {
-                progress += Time.deltaTime / progressSpeed;
+                if (progress < 2.0f)
+                {
+                    progress += Time.deltaTime / progressSpeed;
+                }
+                else
+                {
+                    progress = 2.0f;
+                }
             }
         }
     }
