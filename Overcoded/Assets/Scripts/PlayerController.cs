@@ -8,18 +8,28 @@ using UnityEngine.AI;
 /// * A simple click to move function
 /// </summary>
 
+
+
 public class PlayerController : MonoBehaviour
 {
+
+
+
+
+
     public Vector3 velocity;
 
     NavMeshAgent agent;
     Rigidbody rb;
-    public SpriteRenderer carrying; //This has to be manually set as doing it via GetComponentInChildren gets the player's spriterenderer
+    public SpriteRenderer spriteRenderer; //This has to be manually set as doing it via GetComponentInChildren gets the player's spriterenderer
+    public ObjectType resourceType;
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        rb = GetComponent<Rigidbody>();     
+        rb = GetComponent<Rigidbody>();
+        resourceType = ObjectType.NO_RESOURCE;
+        spriteRenderer.sprite = null;
     }
 
     void Update()
@@ -39,7 +49,13 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.tag == "Resource")
         {
-            carrying.sprite = other.gameObject.GetComponentInChildren<SpriteRenderer>().sprite;
+            spriteRenderer.sprite = other.gameObject.GetComponentInChildren<SpriteRenderer>().sprite;
         }
+    }
+
+    public void ClearHeldObject()
+    {
+        spriteRenderer.sprite = null;
+        resourceType = ObjectType.NO_RESOURCE;
     }
 }

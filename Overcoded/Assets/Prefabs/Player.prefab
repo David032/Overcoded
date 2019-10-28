@@ -156,7 +156,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a0b392d4146becc419784164bba77021, type: 3}
+  m_Sprite: {fileID: 8210634519928773637, guid: ccbb1de44fb680146b38f579ac55a192,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -218,7 +219,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocity: {x: 0, y: 0, z: 0}
-  carrying: {fileID: 7669967039905006016}
+  spriteRenderer: {fileID: 7669967039905006016}
+  resourceType: 0
 --- !u!136 &7669967040220779827
 CapsuleCollider:
   m_ObjectHideFlags: 0
