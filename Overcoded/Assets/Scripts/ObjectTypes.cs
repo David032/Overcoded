@@ -13,3 +13,4 @@ public enum ObjectType
     RAW_CONCEPTS,
     PROCESSED_CONCEPTS
 }
+
