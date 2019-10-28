@@ -12,11 +12,6 @@ using UnityEngine.AI;
 
 public class PlayerController : MonoBehaviour
 {
-
-
-
-
-
     public Vector3 velocity;
 
     NavMeshAgent agent;
@@ -24,6 +19,11 @@ public class PlayerController : MonoBehaviour
     public SpriteRenderer spriteRenderer; //This has to be manually set as doing it via GetComponentInChildren gets the player's spriterenderer
     ObjectType resourceType = ObjectType.NO_RESOURCE;
     public float resourceProgress;
+
+
+    public Material progressNone;
+    public Material progressGold;
+    public Material progressMud;
 
     void Start()
     {
@@ -55,6 +55,14 @@ public class PlayerController : MonoBehaviour
         spriteRenderer.sprite = sprite;
         resourceType = objectType;
         resourceProgress = progress;
+        if (progress < 1.0f)
+        {
+            spriteRenderer.material.Lerp(progressNone, progressGold, progress);
+        }
+        else
+        {
+            spriteRenderer.material.Lerp(progressGold, progressMud, progress - 1);
+        }
     }
 
     public void ClearHeldObject()
