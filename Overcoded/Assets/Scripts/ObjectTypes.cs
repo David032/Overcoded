@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectTypes : MonoBehaviour
-{
     public enum ObjectType
     {
+        NO_RESOURCES,
         RAW_SHAPES,
         PROCESSED_SHAPES,
         RAW_CODE,
@@ -15,4 +14,4 @@ public class ObjectTypes : MonoBehaviour
         RAW_CONCEPTS,
         PROCESSED_CONCEPTS
     }
-}
+
