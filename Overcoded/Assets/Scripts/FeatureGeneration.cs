@@ -7,10 +7,16 @@ public class FeatureGeneration : MonoBehaviour
     public List<Feature> Features;
     public int featureNumber = 0;
 
+
     void createFeature() 
     {
         Features[featureNumber] = gameObject.AddComponent<Feature>();
         Features[featureNumber].CreateFeature(randomFeature(), randomFeature(), randomFeature(), randomFeature());
+        if (Features[featureNumber].R1 == ObjectType.NO_RESOURCES && Features[featureNumber].R2 == ObjectType.NO_RESOURCES
+            && Features[featureNumber].R3 == ObjectType.NO_RESOURCES && Features[featureNumber].R4 == ObjectType.NO_RESOURCES)
+        {
+            createFeature();
+        }
         featureNumber += 1;
         Features.AddRange(new Feature[1]);
     }
