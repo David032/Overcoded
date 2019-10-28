@@ -45,12 +45,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter(Collider other)
+
+
+    public void PickUpObject(Sprite sprite, ObjectType objectType)
     {
-        if (other.gameObject.tag == "Resource")
-        {
-            spriteRenderer.sprite = other.gameObject.GetComponentInChildren<SpriteRenderer>().sprite;
-        }
+        spriteRenderer.sprite = sprite;
+        resourceType = objectType;
     }
 
     public void ClearHeldObject()
