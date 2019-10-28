@@ -23,7 +23,10 @@ public class CreateObject : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            other.GetComponent<PlayerController>().PickUpObject(resourceSprite, resourceType);
+            if (other.GetComponent<PlayerController>().GetHeldObjectType() == ObjectType.NO_RESOURCE)
+            {
+                other.GetComponent<PlayerController>().PickUpObject(resourceSprite, resourceType);
+            }
         }
     }
 }

@@ -22,14 +22,13 @@ public class PlayerController : MonoBehaviour
     NavMeshAgent agent;
     Rigidbody rb;
     public SpriteRenderer spriteRenderer; //This has to be manually set as doing it via GetComponentInChildren gets the player's spriterenderer
-    public ObjectType resourceType;
+    ObjectType resourceType = ObjectType.NO_RESOURCE;
+    public float resourceProgress;
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         rb = GetComponent<Rigidbody>();
-        resourceType = ObjectType.NO_RESOURCE;
-        spriteRenderer.sprite = null;
     }
 
     void Update()
@@ -46,16 +45,22 @@ public class PlayerController : MonoBehaviour
     }
 
 
+    public ObjectType GetHeldObjectType()
+    {
+        return resourceType;
+    }
 
-    public void PickUpObject(Sprite sprite, ObjectType objectType)
+    public void PickUpObject(Sprite sprite, ObjectType objectType, float progress = 0)
     {
         spriteRenderer.sprite = sprite;
         resourceType = objectType;
+        resourceProgress = progress;
     }
 
     public void ClearHeldObject()
     {
         spriteRenderer.sprite = null;
         resourceType = ObjectType.NO_RESOURCE;
+        resourceProgress = 0;
     }
 }
