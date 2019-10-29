@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 public class ES_StateCheck : MonoBehaviour
 {
     public GameObject start_button;
+    public GameObject player_button;
     public GameObject music_on_button;
     public GameObject music_off_button;
 
@@ -60,9 +61,15 @@ public class ES_StateCheck : MonoBehaviour
                 Debug.Log("State 2");
             }
         }
+        else if (current_active == 4)
+        {
+            EventSystem.current.SetSelectedGameObject(player_button);
+            Debug.Log("State 4");
+        }
         else
         {
-            Debug.Log("State 5");
+
+            Debug.Log("Error");
         }
 
         last_active = current_active;

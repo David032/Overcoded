@@ -15,7 +15,7 @@ public class MultiplayerController : MonoBehaviour
     bool hasRan = false;
 
     //This function should called from the menu
-    void setPlayers(int desiredPlayers) 
+    public void setPlayers(int desiredPlayers) 
     {
         numberOfPlayers = desiredPlayers;
     }
