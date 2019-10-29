@@ -8,6 +8,6 @@ public class Menu_LeveSelect : MonoBehaviour
 {
     public void OpenLevel(int level_number)
     {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + level_number);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + level_number,LoadSceneMode.Single);
     }
 }

@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class MultiplayerController : MonoBehaviour
@@ -8,6 +10,9 @@ public class MultiplayerController : MonoBehaviour
     public int numberOfPlayers;
     public List<GameObject> players;
     static int MAXPLAYERS = 4;
+    public Scene GameLevel;
+
+    bool hasRan = false;
 
     //This function should called from the menu
     void setPlayers(int desiredPlayers) 
@@ -15,7 +20,15 @@ public class MultiplayerController : MonoBehaviour
         numberOfPlayers = desiredPlayers;
     }
 
-    private void Start() // This may need to be changed based on how the menu system is working
+    private void LateUpdate()
+    {
+        if (SceneManager.GetActiveScene().buildIndex == 1 && !hasRan)
+        {
+            OnSceneLoaded();
+        }
+    }
+
+    void OnSceneLoaded()
     {
         players.AddRange(new GameObject[1]);
         FindAllPlayers();
@@ -23,6 +36,7 @@ public class MultiplayerController : MonoBehaviour
         {
             players[i].SetActive(true);
         }
+        hasRan = true;
     }
 
     void FindAllPlayers()
