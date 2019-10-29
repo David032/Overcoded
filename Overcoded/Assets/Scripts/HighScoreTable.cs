@@ -80,6 +80,26 @@ public class HighScoreTable : MonoBehaviour
         string name = highScoreEntry.name;
         tableTransform.Find("nameText").GetComponent<Text>().text = name;
 
+        if (rankPos == 1)
+        {
+            tableTransform.Find("posText").GetComponent<Text>().color = new Color32(245,214,121,255);
+            tableTransform.Find("scoreText").GetComponent<Text>().color = new Color32(245, 214, 121, 255);
+            tableTransform.Find("nameText").GetComponent<Text>().color = new Color32(245, 214, 121, 255);
+        }
+
+        if (rankPos == 2)
+        {
+            tableTransform.Find("posText").GetComponent<Text>().color = Color.gray;
+            tableTransform.Find("scoreText").GetComponent<Text>().color = Color.gray;
+            tableTransform.Find("nameText").GetComponent<Text>().color = Color.gray;
+        }
+
+        if (rankPos == 3)
+        {
+            tableTransform.Find("posText").GetComponent<Text>().color = new Color32(85, 61, 49, 255);
+            tableTransform.Find("scoreText").GetComponent<Text>().color = new Color32(85, 61, 49, 255);
+            tableTransform.Find("nameText").GetComponent<Text>().color = new Color32(85, 61, 49, 255);
+        }
 
         transformList.Add(tableTransform);
     }
