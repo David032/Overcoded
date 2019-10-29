@@ -67,6 +67,26 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void PlaceHeldObject()
+    {
+        if(resourceType != ObjectType.NO_RESOURCE)
+        {
+            GameObject resource = new GameObject();
+            resource.AddComponent<SpriteRenderer>();
+            resource.GetComponent<SpriteRenderer>().sprite = spriteRenderer.sprite;
+            resource.GetComponent<SpriteRenderer>().material = spriteRenderer.material;
+
+            resource.AddComponent<ResourceState>();
+            resource.GetComponent<ResourceState>().Set(resourceType, resourceProgress);
+
+
+            Instantiate(resource, transform.position, new Quaternion(0.25f, 0.0f, 0.0f, 0.0f));
+
+            ClearHeldObject();
+        }
+    }
+
+
     public void ClearHeldObject()
     {
         spriteRenderer.sprite = null;
