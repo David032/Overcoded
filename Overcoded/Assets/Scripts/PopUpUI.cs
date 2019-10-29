@@ -17,20 +17,22 @@ public class PopUpUI : MonoBehaviour
 
     public void Update ()
         {
-        LoadResource();
+            PopUp();
+             
         }
     public void PopUp()
     {
-        
+        //takes the features and stores them internly 
         r1 = featureGenerator.Features[0].R1;
         r2 = featureGenerator.Features[0].R2;
         r3 = featureGenerator.Features[0].R3;
         r4 = featureGenerator.Features[0].R4;
+        LoadResource();
     }
 
     public void LoadResource()
     {
-        
+        //switches on each feature and sets the sprite
         switch (r1)
         {
             case ObjectType.PROCESSED_AUDIO:
@@ -105,3 +107,6 @@ public class PopUpUI : MonoBehaviour
         }
     }
 }
+
+
+
