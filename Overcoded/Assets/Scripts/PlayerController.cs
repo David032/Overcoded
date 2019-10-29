@@ -12,17 +12,13 @@ using UnityEngine.AI;
 
 public class PlayerController : MonoBehaviour
 {
-
-
-
-
-
     public Vector3 velocity;
 
     NavMeshAgent agent;
     Rigidbody rb;
     public SpriteRenderer spriteRenderer; //This has to be manually set as doing it via GetComponentInChildren gets the player's spriterenderer
     public ObjectType resourceType;
+    public bool canMove;
 
     void Start()
     {
@@ -34,7 +30,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && canMove)
         {
             RaycastHit hit;
 
@@ -42,6 +38,7 @@ public class PlayerController : MonoBehaviour
             {
                 agent.destination = hit.point;
             }
+
         }
     }
 
@@ -53,9 +50,21 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void OnMouseDown()
+    {
+        canMove = true;
+        StartCoroutine(countdown());
+    }
+
     public void ClearHeldObject()
     {
         spriteRenderer.sprite = null;
         resourceType = ObjectType.NO_RESOURCE;
+    }
+
+    IEnumerator countdown() 
+    {
+        yield return new WaitForSeconds(5);
+        canMove = false;
     }
 }
