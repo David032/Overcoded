@@ -6,6 +6,7 @@ public class FeatureGeneration : MonoBehaviour
 {
     public List<Feature> Features;
     public int featureNumber = 0;
+    public GameObject popUp;
 
 
     void createFeature() 
@@ -17,6 +18,13 @@ public class FeatureGeneration : MonoBehaviour
         {
             createFeature();
         }
+
+        GameObject featureWindow = Instantiate(popUp,this.gameObject.transform,true);
+        featureWindow.name = "Feature" + featureNumber.ToString();
+        featureWindow.GetComponent<PopUpUI>().findTheBoss();
+        featureWindow.GetComponent<PopUpUI>().PopUp(featureNumber);
+
+
         featureNumber += 1;
         Features.AddRange(new Feature[1]);
     }
