@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4108485649791425163}
-  - component: {fileID: 7501726229821161806}
+  - component: {fileID: 3935984635600657513}
   m_Layer: 0
   m_Name: Manager
   m_TagString: GameController
@@ -31,7 +31,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7501726229821161806
+--- !u!114 &3935984635600657513
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40,6 +40,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 7942769395925954146}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ae7b55b4e6221249a69d05f4e5f9643, type: 3}
+  m_Script: {fileID: 11500000, guid: 8514be0af476b5246b28c2529e84d23d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
