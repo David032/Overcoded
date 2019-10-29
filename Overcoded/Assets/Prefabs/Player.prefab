@@ -168,9 +168,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocity: {x: 0, y: 0, z: 0}
-  spriteRenderer: {fileID: 7669967039905006016}
-  resourceType: 0
   canMove: 0
+  spriteRenderer: {fileID: 7669967039905006016}
+  resourceProgress: 0
+  progressNone: {fileID: 2100000, guid: e91e9473d787e864ab9cc6ea32a52084, type: 2}
+  progressGold: {fileID: 2100000, guid: e736ec08c5b69f14485edc7a74493c43, type: 2}
+  progressMud: {fileID: 2100000, guid: 3368e4f87be13834cb5b75f72dc05e7b, type: 2}
 --- !u!136 &7669967040220779827
 CapsuleCollider:
   m_ObjectHideFlags: 0
