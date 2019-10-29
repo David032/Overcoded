@@ -11,27 +11,30 @@ public class ProcessResource : MonoBehaviour
     public Sprite outputResourceSprite;
     public ObjectType outputResourceType;
     public ObjectType inputResourceType;
-    Image progressBar;
-    SpriteRenderer progressBar1;
+    //has to be public because unity's getcompnentinchild function sucks
+    public SpriteRenderer progressBar;
+    public SpriteRenderer progressBar1;
+    public Animator progressAnimation;
 
     // Start is called before the first frame update
     void Start()
     {
-        progressBar = GetComponentInChildren<Image>();
-        progressBar1 = GetComponentInChildren<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        //set progress bar animation to 'progress' through
         if (progress < 1.0f)
         {
-            //progressBar.fillAmount = progress;
+            progressAnimation.Play("Progress", 0, progress);
         }
         else if (progress > 1.0f)
         {
+            //makes animated progress bar red and enables green backing 
+            progressBar.color = new Color32(194, 24, 24, 255);
             progressBar1.enabled = true;
-            //progressBar.fillAmount = progress - 1.0f;
+            progressAnimation.Play("Progress", 0, progress - 1.0f);
         }
     }
 
@@ -49,6 +52,7 @@ public class ProcessResource : MonoBehaviour
             }
             else
             {
+                //cap overworking a resource to 200%
                 if (progress < 2.0f)
                 {
                     //takes progressSpeed seconds for progress = 1.0f;
@@ -64,11 +68,13 @@ public class ProcessResource : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        //if player leaves station while processing give player procesed resource and reset progess indicators
         if (other.tag == "Player" && procesing)
         {
             other.GetComponent<PlayerController>().PickUpObject(outputResourceSprite, outputResourceType, progress);
             procesing = false;
             progressBar1.enabled = false;
+            progressBar.color = new Color32( 24, 170, 24, 255);
             progress = 0;
         }
     }
