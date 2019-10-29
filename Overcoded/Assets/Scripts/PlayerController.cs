@@ -16,16 +16,21 @@ public class PlayerController : MonoBehaviour
 
     NavMeshAgent agent;
     Rigidbody rb;
-    public SpriteRenderer spriteRenderer; //This has to be manually set as doing it via GetComponentInChildren gets the player's spriterenderer
-    public ObjectType resourceType;
     public bool canMove;
+    public SpriteRenderer spriteRenderer; //This has to be manually set as doing it via GetComponentInChildren gets the player's spriterenderer
+
+
+    ObjectType resourceType = ObjectType.NO_RESOURCE;
+    public float resourceProgress;
+
+    public Material progressNone;
+    public Material progressGold;
+    public Material progressMud;
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         rb = GetComponent<Rigidbody>();
-        resourceType = ObjectType.NO_RESOURCE;
-        spriteRenderer.sprite = null;
     }
 
     void Update()
@@ -38,8 +43,36 @@ public class PlayerController : MonoBehaviour
             {
                 agent.destination = hit.point;
             }
-
         }
+    }
+
+
+    public ObjectType GetHeldObjectType()
+    {
+        return resourceType;
+    }
+
+    public void PickUpObject(Sprite sprite, ObjectType objectType, float progress = 0)
+    {
+        spriteRenderer.sprite = sprite;
+        resourceType = objectType;
+        resourceProgress = progress;
+        if (progress < 1.0f)
+        {
+            spriteRenderer.material.Lerp(progressNone, progressGold, progress);
+        }
+        else
+        {
+            spriteRenderer.material.Lerp(progressGold, progressMud, progress - 1);
+        }
+    }
+
+    public void ClearHeldObject()
+    {
+        spriteRenderer.sprite = null;
+        resourceType = ObjectType.NO_RESOURCE;
+
+        resourceProgress = 0;
     }
 
     void OnTriggerEnter(Collider other)
@@ -54,12 +87,6 @@ public class PlayerController : MonoBehaviour
     {
         canMove = true;
         StartCoroutine(countdown());
-    }
-
-    public void ClearHeldObject()
-    {
-        spriteRenderer.sprite = null;
-        resourceType = ObjectType.NO_RESOURCE;
     }
 
     IEnumerator countdown() 
