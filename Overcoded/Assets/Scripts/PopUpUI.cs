@@ -15,6 +15,7 @@ public class PopUpUI : MonoBehaviour
     ObjectType r3;
     ObjectType r4;
 
+    public string FeatureId;
 
     public void findTheBoss() 
     {
@@ -33,6 +34,10 @@ public class PopUpUI : MonoBehaviour
 
     public void LoadResource(int fNum)
     {
+        print(r1);
+        print(r2);
+        print(r3);
+        print(r4);
         //switches on each feature and sets the sprite
         switch (r1)
         {
@@ -50,6 +55,7 @@ public class PopUpUI : MonoBehaviour
                 break;
 
             default:
+                print("FAILED TO FIND SPRITE");
                 break;
         }
         switch (r2)
@@ -68,6 +74,7 @@ public class PopUpUI : MonoBehaviour
                 break;
 
             default:
+                print("FAILED TO FIND SPRITE");
                 break;
         }
         switch (r3)
@@ -86,6 +93,7 @@ public class PopUpUI : MonoBehaviour
                 break;
 
             default:
+                print("FAILED TO FIND SPRITE");
                 break;
         }
         switch (r4)
@@ -104,6 +112,7 @@ public class PopUpUI : MonoBehaviour
                 break;
 
             default:
+                print("FAILED TO FIND SPRITE");
                 break;
         }
         

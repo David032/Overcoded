@@ -44,7 +44,6 @@ public class MultiplayerController : MonoBehaviour
         for (int i = 0; i < MAXPLAYERS; i++)
         {
             players[i] = GameObject.FindGameObjectWithTag("Player");
-            print("Found player:" + players[i]);
             players[i].SetActive(false);
             players.AddRange(new GameObject[1]);
         }

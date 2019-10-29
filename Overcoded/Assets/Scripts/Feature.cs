@@ -15,6 +15,7 @@ public class Feature : MonoBehaviour
     public bool R4Complete;
 
     public int score = 0;
+    public string FeatureId;
 
     public Feature() { }
 

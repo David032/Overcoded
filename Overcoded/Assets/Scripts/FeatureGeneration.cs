@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement; //Debug function, remove for final?
 
 public class FeatureGeneration : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class FeatureGeneration : MonoBehaviour
     public int featureNumber = 0;
     public GameObject popUp;
 
+    GameObject eventPosition;
+    bool hasRan = false;
 
     void createFeature() 
     {
@@ -18,10 +21,12 @@ public class FeatureGeneration : MonoBehaviour
         {
             createFeature();
         }
+        Features[featureNumber].FeatureId = "Feature " + featureNumber.ToString();
 
-        GameObject featureWindow = Instantiate(popUp,this.gameObject.transform,true);
+        GameObject featureWindow = Instantiate(popUp,eventPosition.transform,true);
         featureWindow.name = "Feature" + featureNumber.ToString();
         featureWindow.GetComponent<PopUpUI>().findTheBoss();
+        featureWindow.GetComponent<PopUpUI>().FeatureId = Features[featureNumber].FeatureId;
         featureWindow.GetComponent<PopUpUI>().PopUp(featureNumber);
 
 
@@ -56,17 +61,21 @@ public class FeatureGeneration : MonoBehaviour
 
         return featureToReturn;
     }
-    private void Start()
-    {
-        Features.AddRange(new Feature[1]);
-        createFeature();
-    }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetKeyDown(KeyCode.Return)) //Debug function
         {
             createFeature();
+        }
+
+        if (SceneManager.GetActiveScene().buildIndex == 1 && !hasRan) 
+        {
+            eventPosition = GameObject.FindGameObjectWithTag("EventHolder");
+            Features.AddRange(new Feature[1]);
+            createFeature();
+
+            hasRan = true;
         }
     }
 }
