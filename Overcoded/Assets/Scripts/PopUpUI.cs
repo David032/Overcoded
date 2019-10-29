@@ -5,6 +5,10 @@ using UnityEngine;
 public class PopUpUI : MonoBehaviour
 {
     public FeatureGeneration featureGenerator;
+    public GameObject managerLocation;
+    public Sprite managerSprite;
+    public GameObject bubbleLocation;
+    public Sprite bubbleSprite;
     public GameObject[] resource;
     public Sprite audioSprite;
     public Sprite codeSprite;
@@ -18,10 +22,11 @@ public class PopUpUI : MonoBehaviour
     public void Update ()
         {
             PopUp();
-             
         }
     public void PopUp()
     {
+       // managerLocation.GetComponent<SpriteRenderer>().sprite = managerSprite;
+        bubbleLocation.GetComponent<SpriteRenderer>().sprite = bubbleSprite;
         //takes the features and stores them internly 
         r1 = featureGenerator.Features[0].R1;
         r2 = featureGenerator.Features[0].R2;
@@ -105,6 +110,7 @@ public class PopUpUI : MonoBehaviour
             default:
                 break;
         }
+        
     }
 }
 
