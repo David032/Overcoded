@@ -12,8 +12,8 @@ public class FeatureGeneration : MonoBehaviour
     {
         Features[featureNumber] = gameObject.AddComponent<Feature>();
         Features[featureNumber].CreateFeature(randomFeature(), randomFeature(), randomFeature(), randomFeature());
-        if (Features[featureNumber].R1 == ObjectType.NO_RESOURCES && Features[featureNumber].R2 == ObjectType.NO_RESOURCES
-            && Features[featureNumber].R3 == ObjectType.NO_RESOURCES && Features[featureNumber].R4 == ObjectType.NO_RESOURCES)
+        if (Features[featureNumber].R1 == ObjectType.NO_RESOURCE && Features[featureNumber].R2 == ObjectType.NO_RESOURCE
+            && Features[featureNumber].R3 == ObjectType.NO_RESOURCE && Features[featureNumber].R4 == ObjectType.NO_RESOURCE)
         {
             createFeature();
         }
@@ -24,7 +24,7 @@ public class FeatureGeneration : MonoBehaviour
     ObjectType randomFeature() 
     {
         int rndNumber = Random.Range(1, 6);
-        ObjectType featureToReturn = ObjectType.NO_RESOURCES;
+        ObjectType featureToReturn = ObjectType.NO_RESOURCE;
         if (rndNumber == 1)
         {
             featureToReturn = ObjectType.PROCESSED_AUDIO;
@@ -43,7 +43,7 @@ public class FeatureGeneration : MonoBehaviour
         }
         else if (rndNumber == 5)
         {
-            featureToReturn = ObjectType.NO_RESOURCES;
+            featureToReturn = ObjectType.NO_RESOURCE;
         }
 
         return featureToReturn;
