@@ -138,6 +138,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 2725874922545370547, guid: 247df781976fc5a4d8a1f187705b338d,
+        type: 3}
+      propertyPath: popUp
+      value: 
+      objectReference: {fileID: 1984448968228229148, guid: 33dced336923c5b4cb862e2be365affa,
+        type: 3}
     - target: {fileID: 4108485649791425163, guid: 247df781976fc5a4d8a1f187705b338d,
         type: 3}
       propertyPath: m_LocalPosition.x
