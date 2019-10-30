@@ -42,16 +42,16 @@ public class PopUpUI : MonoBehaviour
         switch (r1)
         {
             case ObjectType.PROCESSED_AUDIO:
-                resource[fNum].GetComponent<SpriteRenderer>().sprite = audioSprite;
+                resource[0].GetComponent<SpriteRenderer>().sprite = audioSprite;
                 break;
             case ObjectType.PROCESSED_CODE:
-                resource[fNum].GetComponent<SpriteRenderer>().sprite = codeSprite;
+                resource[0].GetComponent<SpriteRenderer>().sprite = codeSprite;
                 break;
             case ObjectType.PROCESSED_CONCEPTS:
-                resource[fNum].GetComponent<SpriteRenderer>().sprite = conceptsSprite;
+                resource[0].GetComponent<SpriteRenderer>().sprite = conceptsSprite;
                 break;
             case ObjectType.PROCESSED_SHAPES:
-                resource[fNum].GetComponent<SpriteRenderer>().sprite = shapesSprite;
+                resource[0].GetComponent<SpriteRenderer>().sprite = shapesSprite;
                 break;
 
             default:
@@ -61,16 +61,16 @@ public class PopUpUI : MonoBehaviour
         switch (r2)
         {
             case ObjectType.PROCESSED_AUDIO:
-                resource[fNum].GetComponent<SpriteRenderer>().sprite = audioSprite;
+                resource[1].GetComponent<SpriteRenderer>().sprite = audioSprite;
                 break;
             case ObjectType.PROCESSED_CODE:
-                resource[fNum].GetComponent<SpriteRenderer>().sprite = codeSprite;
+                resource[1].GetComponent<SpriteRenderer>().sprite = codeSprite;
                 break;
             case ObjectType.PROCESSED_CONCEPTS:
-                resource[fNum].GetComponent<SpriteRenderer>().sprite = conceptsSprite;
+                resource[1].GetComponent<SpriteRenderer>().sprite = conceptsSprite;
                 break;
             case ObjectType.PROCESSED_SHAPES:
-                resource[fNum].GetComponent<SpriteRenderer>().sprite = shapesSprite;
+                resource[1].GetComponent<SpriteRenderer>().sprite = shapesSprite;
                 break;
 
             default:
@@ -80,16 +80,16 @@ public class PopUpUI : MonoBehaviour
         switch (r3)
         {
             case ObjectType.PROCESSED_AUDIO:
-                resource[fNum].GetComponent<SpriteRenderer>().sprite = audioSprite;
+                resource[2].GetComponent<SpriteRenderer>().sprite = audioSprite;
                 break;
             case ObjectType.PROCESSED_CODE:
-                resource[fNum].GetComponent<SpriteRenderer>().sprite = codeSprite;
+                resource[2].GetComponent<SpriteRenderer>().sprite = codeSprite;
                 break;
             case ObjectType.PROCESSED_CONCEPTS:
-                resource[fNum].GetComponent<SpriteRenderer>().sprite = conceptsSprite;
+                resource[2].GetComponent<SpriteRenderer>().sprite = conceptsSprite;
                 break;
             case ObjectType.PROCESSED_SHAPES:
-                resource[fNum].GetComponent<SpriteRenderer>().sprite = shapesSprite;
+                resource[2].GetComponent<SpriteRenderer>().sprite = shapesSprite;
                 break;
 
             default:
@@ -99,16 +99,16 @@ public class PopUpUI : MonoBehaviour
         switch (r4)
         {
             case ObjectType.PROCESSED_AUDIO:
-                resource[fNum].GetComponent<SpriteRenderer>().sprite = audioSprite;
+                resource[3].GetComponent<SpriteRenderer>().sprite = audioSprite;
                 break;
             case ObjectType.PROCESSED_CODE:
-                resource[fNum].GetComponent<SpriteRenderer>().sprite = codeSprite;
+                resource[3].GetComponent<SpriteRenderer>().sprite = codeSprite;
                 break;
             case ObjectType.PROCESSED_CONCEPTS:
-                resource[fNum].GetComponent<SpriteRenderer>().sprite = conceptsSprite;
+                resource[3].GetComponent<SpriteRenderer>().sprite = conceptsSprite;
                 break;
             case ObjectType.PROCESSED_SHAPES:
-                resource[fNum].GetComponent<SpriteRenderer>().sprite = shapesSprite;
+                resource[3].GetComponent<SpriteRenderer>().sprite = shapesSprite;
                 break;
 
             default:
