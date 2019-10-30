@@ -6,17 +6,17 @@ using UnityEngine.AI;
 /// <summary>
 /// Player Controller Script, that currently contains:
 /// * A simple click to move function
+/// * Space for sprite manipulation -> Animating, and applying a highlight when selected
+/// * Resource acquisition
 /// </summary>
 
 
 
 public class PlayerController : MonoBehaviour
 {
-    public Vector3 velocity;
-
     NavMeshAgent agent;
     Rigidbody rb;
-    public bool canMove;
+    bool canMove;
     public SpriteRenderer spriteRenderer; //This has to be manually set as doing it via GetComponentInChildren gets the player's spriterenderer
 
 
@@ -35,6 +35,8 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        highlightCheck();
+
         if (Input.GetMouseButtonDown(0) && canMove)
         {
             RaycastHit hit;
@@ -46,6 +48,19 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void highlightCheck()
+    {
+        if (canMove)
+        {
+            //Apply the player highlight here
+        }
+        else
+        {
+            //Reset to default player sprite
+        }
+    }
+
+    bool getMovableState() { return canMove; } //this might be useful for checking whether or not the player needs animating
     public void PickUpObject(Sprite sprite, ObjectType objectType, float progress = 0)
     {
         spriteRenderer.sprite = sprite;
