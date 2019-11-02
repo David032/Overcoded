@@ -76,9 +76,6 @@ public class PlayerController : MonoBehaviour
             Quaternion rot = Quaternion.Euler(90,0,0);
             resource.transform.position = transform.position;
             resource.transform.rotation = rot;
-            resource.transform.localScale.Set(0.15f, 0.15f, 1); //This isn't scaling properly and I don't know why :(
-            resource.transform.localScale.Scale(new Vector3(0.15f, 0.15f, 1));
-
             //Instantiate(resource, transform.position, rot); - The moment a new gameobject is created, it's spawned in the worldspace
 
             ClearHeldObject();

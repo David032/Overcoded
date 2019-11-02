@@ -29,29 +29,37 @@ public class FeatureChecking : MonoBehaviour
 
             foreach (Feature var in managerGenerator.Features)
             {
-                if (InsertedObject == var.R1)
+                if (InsertedObject == var.R1 && !var.R1Complete)
                 {
                     var.score += other.gameObject.GetComponent<PlayerController>().GetResourceProgress();
                     ChangeSprite(InsertedObject, var, 0);
                     var.R1Complete = true;
+                    print("Matched slot 1");
                 }
-                else if (InsertedObject == var.R2)
+                else if (InsertedObject == var.R2 && !var.R2Complete)
                 {
                     var.score += other.gameObject.GetComponent<PlayerController>().GetResourceProgress();
                     ChangeSprite(InsertedObject, var, 1);
                     var.R2Complete = true;
+                    print("Matched slot 2");
                 }
-                else if (InsertedObject == var.R3)
+                else if (InsertedObject == var.R3 && !var.R3Complete)
                 {
                     var.score += other.gameObject.GetComponent<PlayerController>().GetResourceProgress();
                     ChangeSprite(InsertedObject, var, 2);
                     var.R3Complete = true;
+                    print("Matched slot 3");
                 }
-                else if (InsertedObject == var.R4)
+                else if (InsertedObject == var.R4 && !var.R4Complete)
                 {
                     var.score += other.gameObject.GetComponent<PlayerController>().GetResourceProgress();
                     ChangeSprite(InsertedObject, var, 3);
                     var.R4Complete = true;
+                    print("Matched slot 4");
+                }
+                else
+                {
+                    print("No match!");
                 }
             }
 
