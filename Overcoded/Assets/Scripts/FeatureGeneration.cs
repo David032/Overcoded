@@ -5,27 +5,35 @@ using UnityEngine.SceneManagement;
 
 public class FeatureGeneration : MonoBehaviour
 {
-    public List<Feature> Features;
+    public float totalScore;
+
+    public Dictionary<int ,Feature> Features;
     public int featureNumber = 0;
     public GameObject popUp;
 
+
     GameObject eventPosition;
     bool hasRan = false;
-    public List<GameObject> RequestedFeatures;
+    public Dictionary<int, GameObject> RequestedFeatures;
     GameObject lastFeature;
 
     public void createFeature() 
     {
         //At most, 6 features should be generated, so if it goes past that, we'll need to delete the oldest one?
-        Features[featureNumber] = gameObject.AddComponent<Feature>();
-        Features[featureNumber].CreateFeature(randomFeature(), randomFeature(), randomFeature(), randomFeature());
-        if (Features[featureNumber].R1 == ObjectType.NO_RESOURCE && Features[featureNumber].R2 == ObjectType.NO_RESOURCE
-            && Features[featureNumber].R3 == ObjectType.NO_RESOURCE && Features[featureNumber].R4 == ObjectType.NO_RESOURCE)
+        //posable prevent new features at 6
+        if (Features.Count >= 6) { return; }
+
+        Feature newFeature = gameObject.AddComponent<Feature>();
+
+        newFeature.CreateFeature(randomFeature(), randomFeature(), randomFeature(), randomFeature());
+        if (newFeature.R1 == ObjectType.NO_RESOURCE && newFeature.R2 == ObjectType.NO_RESOURCE
+            && newFeature.R3 == ObjectType.NO_RESOURCE && newFeature.R4 == ObjectType.NO_RESOURCE)
         {
             createFeature();
         }
-        Features[featureNumber].FeatureId = featureNumber;
+        newFeature.FeatureId = featureNumber;
 
+        Features.Add(featureNumber, newFeature);
         CreateFeatureWindow();
 
         featureNumber += 1;
@@ -35,7 +43,7 @@ public class FeatureGeneration : MonoBehaviour
     {
         if (lastFeature != null)
         {
-            foreach (GameObject item in RequestedFeatures)
+            foreach (GameObject item in RequestedFeatures.Values)
             {
                 item.transform.Translate(0, 3, 0);
                 print("Translated");
@@ -52,7 +60,7 @@ public class FeatureGeneration : MonoBehaviour
         Features[featureNumber].setLinkedWindow(featureWindow);
         lastFeature = featureWindow;
 
-        RequestedFeatures.Add(featureWindow);
+        RequestedFeatures.Add(featureNumber, featureWindow);
     }
 
     ObjectType randomFeature() 
@@ -87,14 +95,15 @@ public class FeatureGeneration : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Return)) //Debug function
         {
-            Features.AddRange(new Feature[1]);
             createFeature();
         }
 
         if (SceneManager.GetActiveScene().buildIndex == 1 && !hasRan) 
         {
+            Features = new Dictionary<int, Feature>();
+            RequestedFeatures = new Dictionary<int, GameObject>();
+
             eventPosition = GameObject.FindGameObjectWithTag("EventHolder");
-            Features.AddRange(new Feature[1]);
             createFeature();
 
             hasRan = true;
@@ -103,6 +112,8 @@ public class FeatureGeneration : MonoBehaviour
 
     public void deleteFeature(int id) 
     {
-        GameObject.Destroy(Features[id].getLinkedWindow().gameObject); //Deletes pop up        
+        Destroy(Features[id].getLinkedWindow()); //Deletes pop up // do before removing from list 
+        Features.Remove(id);
+        RequestedFeatures.Remove(id);     
     }
 }

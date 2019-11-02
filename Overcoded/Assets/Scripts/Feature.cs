@@ -55,6 +55,7 @@ public class Feature : MonoBehaviour
         if (R1Complete && R2Complete && R3Complete && R4Complete)
         {
             //Add score to total score
+            GetComponent<FeatureGeneration>().totalScore += score;
             GetComponent<FeatureGeneration>().deleteFeature(FeatureId);
             Destroy(this);
         }

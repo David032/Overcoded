@@ -17,8 +17,6 @@ public class PopUpUI : MonoBehaviour
     ObjectType r3;
     ObjectType r4;
 
-
-
     public void findTheBoss() 
     {
         featureGenerator = GameObject.FindGameObjectWithTag("GameController").GetComponent<FeatureGeneration>();
