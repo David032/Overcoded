@@ -16,11 +16,6 @@ public class ProcessResource : MonoBehaviour
     public SpriteRenderer progressBar1;
     public Animator progressAnimation;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
-
     // Update is called once per frame
     void Update()
     {

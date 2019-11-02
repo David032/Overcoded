@@ -28,35 +28,35 @@ public class FeatureChecking : MonoBehaviour
 
         if (InsertedObject != ObjectType.NO_RESOURCE)
         {
-            bool componantMatched = false;
-            Feature featuer = managerGenerator.Features[0];
+            bool componentMatched = false;
+            Feature featureBeingChecked = managerGenerator.Features[0];
 
-            if (InsertedObject == featuer.R1 && !featuer.R1Complete)
+            if (InsertedObject == featureBeingChecked.R1 && !featureBeingChecked.R1Complete)
             {
-                componantMatched = true;
-                ChangeSprite(InsertedObject, featuer, 0);
-                featuer.R1Complete = true;
+                componentMatched = true;
+                ChangeSprite(InsertedObject, featureBeingChecked, 0);
+                featureBeingChecked.R1Complete = true;
                 print("Matched slot 1");
             }
-            else if (InsertedObject == featuer.R2 && !featuer.R2Complete)
+            else if (InsertedObject == featureBeingChecked.R2 && !featureBeingChecked.R2Complete)
             {
-                componantMatched = true;
-                ChangeSprite(InsertedObject, featuer, 1);
-                featuer.R2Complete = true;
+                componentMatched = true;
+                ChangeSprite(InsertedObject, featureBeingChecked, 1);
+                featureBeingChecked.R2Complete = true;
                 print("Matched slot 2");
             }
-            else if (InsertedObject == featuer.R3 && !featuer.R3Complete)
+            else if (InsertedObject == featureBeingChecked.R3 && !featureBeingChecked.R3Complete)
             {
-                componantMatched = true;
-                ChangeSprite(InsertedObject, featuer, 2);
-                featuer.R3Complete = true;
+                componentMatched = true;
+                ChangeSprite(InsertedObject, featureBeingChecked, 2);
+                featureBeingChecked.R3Complete = true;
                 print("Matched slot 3");
             }
-            else if (InsertedObject == featuer.R4 && !featuer.R4Complete)
+            else if (InsertedObject == featureBeingChecked.R4 && !featureBeingChecked.R4Complete)
             {
-                componantMatched = true;
-                ChangeSprite(InsertedObject, featuer, 3);
-                featuer.R4Complete = true;
+                componentMatched = true;
+                ChangeSprite(InsertedObject, featureBeingChecked, 3);
+                featureBeingChecked.R4Complete = true;
                 print("Matched slot 4");
             }
             else
@@ -65,20 +65,20 @@ public class FeatureChecking : MonoBehaviour
             }
 
 
-            if (componantMatched)
+            if (componentMatched)
             {
                 if (Progress < 0.9f)
                 {
-                    featuer.score += Progress;
+                    featureBeingChecked.score += Progress;
                 }
                 else if (Progress > 1.1f)
                 {
-                    featuer.score += 2.0f - Progress;
+                    featureBeingChecked.score += 2.0f - Progress;
                 }
                 else
                 {
                     //give bonus score for neer perfect timing?
-                    featuer.score += 1.25f;
+                    featureBeingChecked.score += 1.25f;
                 }
             }
 

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3084470696501843620}
   - component: {fileID: 2725874922545370547}
   - component: {fileID: 8552415887892378690}
-  - component: {fileID: -7549096106235437362}
+  - component: {fileID: 6461742016167715373}
   m_Layer: 0
   m_Name: Manager
   m_TagString: GameController
@@ -75,10 +75,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fff6a41a6a3f31745a64fc536c1a758e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Features: []
+  totalScore: 0
   featureNumber: 0
   popUp: {fileID: 1984448968228229148, guid: 33dced336923c5b4cb862e2be365affa, type: 3}
-  RequestedFeatures: []
 --- !u!114 &8552415887892378690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -95,3 +94,16 @@ MonoBehaviour:
   completedAudio: {fileID: 21300000, guid: 69c6169483dad214dba115a52452e2ed, type: 3}
   completedDesign: {fileID: 21300000, guid: 8fc3692c1b85c5c4790de1a6752a0340, type: 3}
   completedArt: {fileID: 21300000, guid: d8ee00c7565ecaa46918b25030fe4bd3, type: 3}
+--- !u!114 &6461742016167715373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7942769395925954146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c86a6deb7d1c582459bd952f8bfa150a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FeatureTime: 20

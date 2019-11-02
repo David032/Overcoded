@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     public SpriteRenderer spriteRenderer; //This has to be manually set as doing it via GetComponentInChildren gets the player's spriterenderer
 
 
-    ObjectType resourceType = ObjectType.NO_RESOURCE; //DEBUG - CHANGE TO PRIVATE FOR RELEASE
+    ObjectType resourceType = ObjectType.NO_RESOURCE; 
     float resourceProgress;
 
     public Material progressNone;
@@ -76,7 +76,6 @@ public class PlayerController : MonoBehaviour
             Quaternion rot = Quaternion.Euler(90,0,0);
             resource.transform.position = transform.position;
             resource.transform.rotation = rot;
-            //Instantiate(resource, transform.position, rot); - The moment a new gameobject is created, it's spawned in the worldspace
 
             ClearHeldObject();
         }
