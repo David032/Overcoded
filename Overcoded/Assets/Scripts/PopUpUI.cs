@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PopUpUI : MonoBehaviour
 {
-    public string FeatureId;
+    public int FeatureId;
 
     public FeatureGeneration featureGenerator;
     public GameObject[] resource;
@@ -52,7 +52,7 @@ public class PopUpUI : MonoBehaviour
                 break;
 
             default:
-                print("FAILED TO FIND SPRITE");
+                print("FAILED TO FIND SPRITE OR BLANK SPOT");
                 break;
         }
         switch (r2)
@@ -71,7 +71,7 @@ public class PopUpUI : MonoBehaviour
                 break;
 
             default:
-                print("FAILED TO FIND SPRITE");
+                print("FAILED TO FIND SPRITE OR BLANK SPOT");
                 break;
         }
         switch (r3)
@@ -90,7 +90,7 @@ public class PopUpUI : MonoBehaviour
                 break;
 
             default:
-                print("FAILED TO FIND SPRITE");
+                print("FAILED TO FIND SPRITE OR BLANK SPOT");
                 break;
         }
         switch (r4)
@@ -109,7 +109,7 @@ public class PopUpUI : MonoBehaviour
                 break;
 
             default:
-                print("FAILED TO FIND SPRITE");
+                print("FAILED TO FIND SPRITE OR BLANK SPOT");
                 break;
         }
         

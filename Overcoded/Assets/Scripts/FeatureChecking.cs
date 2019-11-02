@@ -33,29 +33,37 @@ public class FeatureChecking : MonoBehaviour
             {
                 bool componantMatched = false;
 
-                if (InsertedObject == var.R1)
+                if (InsertedObject == var.R1 && !var.R1Complete)
                 {
                     componantMatched = true;
                     ChangeSprite(InsertedObject, var, 0);
                     var.R1Complete = true;
+                    print("Matched slot 1");
                 }
-                else if (InsertedObject == var.R2)
+                else if (InsertedObject == var.R2 && !var.R2Complete)
                 {
                     componantMatched = true;
                     ChangeSprite(InsertedObject, var, 1);
                     var.R2Complete = true;
+                    print("Matched slot 2");
                 }
-                else if (InsertedObject == var.R3)
+                else if (InsertedObject == var.R3 && !var.R3Complete)
                 {
                     componantMatched = true;
                     ChangeSprite(InsertedObject, var, 2);
                     var.R3Complete = true;
+                    print("Matched slot 3");
                 }
-                else if (InsertedObject == var.R4)
+                else if (InsertedObject == var.R4 && !var.R4Complete)
                 {
                     componantMatched = true;
                     ChangeSprite(InsertedObject, var, 3);
                     var.R4Complete = true;
+                    print("Matched slot 4");
+                }
+                else
+                {
+                    print("No match!");
                 }
 
 
@@ -90,16 +98,16 @@ public class FeatureChecking : MonoBehaviour
         switch (InsertedObject)
         {
             case ObjectType.PROCESSED_SHAPES:
-                var.linkedWindow.GetComponent<PopUpUI>().resource[spotNum].GetComponent<SpriteRenderer>().sprite = completedArt;
+                var.getLinkedWindow().GetComponent<PopUpUI>().resource[spotNum].GetComponent<SpriteRenderer>().sprite = completedArt;
                 break;
             case ObjectType.PROCESSED_CODE:
-                var.linkedWindow.GetComponent<PopUpUI>().resource[spotNum].GetComponent<SpriteRenderer>().sprite = completedCode;
+                var.getLinkedWindow().GetComponent<PopUpUI>().resource[spotNum].GetComponent<SpriteRenderer>().sprite = completedCode;
                 break;
             case ObjectType.PROCESSED_AUDIO:
-                var.linkedWindow.GetComponent<PopUpUI>().resource[spotNum].GetComponent<SpriteRenderer>().sprite = completedAudio;
+                var.getLinkedWindow().GetComponent<PopUpUI>().resource[spotNum].GetComponent<SpriteRenderer>().sprite = completedAudio;
                 break;
             case ObjectType.PROCESSED_CONCEPTS:
-                var.linkedWindow.GetComponent<PopUpUI>().resource[spotNum].GetComponent<SpriteRenderer>().sprite = completedDesign;
+                var.getLinkedWindow().GetComponent<PopUpUI>().resource[spotNum].GetComponent<SpriteRenderer>().sprite = completedDesign;
                 break;
             default:
                 break;

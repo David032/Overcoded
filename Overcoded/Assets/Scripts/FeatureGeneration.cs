@@ -11,10 +11,12 @@ public class FeatureGeneration : MonoBehaviour
 
     GameObject eventPosition;
     bool hasRan = false;
-    public List<GameObject> RequestedFeatures; 
+    public List<GameObject> RequestedFeatures;
+    GameObject lastFeature;
 
     void createFeature()
     {
+        //At most, 6 features should be generated, so if it goes past that, we'll need to delete the oldest one?
         Features[featureNumber] = gameObject.AddComponent<Feature>();
         Features[featureNumber].CreateFeature(randomFeature(), randomFeature(), randomFeature(), randomFeature());
         if (Features[featureNumber].R1 == ObjectType.NO_RESOURCE && Features[featureNumber].R2 == ObjectType.NO_RESOURCE
@@ -22,28 +24,35 @@ public class FeatureGeneration : MonoBehaviour
         {
             createFeature();
         }
-        Features[featureNumber].FeatureId = "Feature " + featureNumber.ToString();
+        Features[featureNumber].FeatureId = featureNumber;
 
         CreateFeatureWindow();
 
         featureNumber += 1;
-
-        for (int i = 0; i < RequestedFeatures.Count; i++)
-        {
-            print("WooWoo");
-        }
     }
 
     private void CreateFeatureWindow()
     {
+        if (lastFeature != null)
+        {
+            foreach (GameObject item in RequestedFeatures)
+            {
+                item.transform.Translate(0, 3, 0);
+                print("Translated");
+
+            }
+            //lastFeature.transform.Translate(0, 3, 0);
+        }
         Quaternion rot = Quaternion.Euler(90, 0, 0);
         GameObject featureWindow = Instantiate(popUp, new Vector3(26.75f, 0.54f, 3.44f), rot, eventPosition.transform);
         featureWindow.name = "Feature " + featureNumber.ToString();
         featureWindow.GetComponent<PopUpUI>().findTheBoss();
         featureWindow.GetComponent<PopUpUI>().FeatureId = Features[featureNumber].FeatureId;
         featureWindow.GetComponent<PopUpUI>().PopUp(featureNumber);
-        featureWindow.transform.localPosition.Set(10, 10, 10);
-        Features[featureNumber].linkedWindow = featureWindow;
+        Features[featureNumber].setLinkedWindow(featureWindow);
+        lastFeature = featureWindow;
+
+        RequestedFeatures.Add(featureWindow);
     }
 
     ObjectType randomFeature() 
@@ -90,5 +99,10 @@ public class FeatureGeneration : MonoBehaviour
 
             hasRan = true;
         }
+    }
+
+    public void deleteFeature(int id) 
+    {
+        GameObject.Destroy(Features[id].getLinkedWindow().gameObject); //Deletes pop up        
     }
 }
