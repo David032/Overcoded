@@ -28,60 +28,57 @@ public class FeatureChecking : MonoBehaviour
 
         if (InsertedObject != ObjectType.NO_RESOURCE)
         {
+            bool componantMatched = false;
+            Feature featuer = managerGenerator.Features[0];
 
-            foreach (Feature var in managerGenerator.Features)
+            if (InsertedObject == featuer.R1 && !featuer.R1Complete)
             {
-                bool componantMatched = false;
+                componantMatched = true;
+                ChangeSprite(InsertedObject, featuer, 0);
+                featuer.R1Complete = true;
+                print("Matched slot 1");
+            }
+            else if (InsertedObject == featuer.R2 && !featuer.R2Complete)
+            {
+                componantMatched = true;
+                ChangeSprite(InsertedObject, featuer, 1);
+                featuer.R2Complete = true;
+                print("Matched slot 2");
+            }
+            else if (InsertedObject == featuer.R3 && !featuer.R3Complete)
+            {
+                componantMatched = true;
+                ChangeSprite(InsertedObject, featuer, 2);
+                featuer.R3Complete = true;
+                print("Matched slot 3");
+            }
+            else if (InsertedObject == featuer.R4 && !featuer.R4Complete)
+            {
+                componantMatched = true;
+                ChangeSprite(InsertedObject, featuer, 3);
+                featuer.R4Complete = true;
+                print("Matched slot 4");
+            }
+            else
+            {
+                print("No match!");
+            }
 
-                if (InsertedObject == var.R1 && !var.R1Complete)
+
+            if (componantMatched)
+            {
+                if (Progress < 0.9f)
                 {
-                    componantMatched = true;
-                    ChangeSprite(InsertedObject, var, 0);
-                    var.R1Complete = true;
-                    print("Matched slot 1");
+                    featuer.score += Progress;
                 }
-                else if (InsertedObject == var.R2 && !var.R2Complete)
+                else if (Progress > 1.1f)
                 {
-                    componantMatched = true;
-                    ChangeSprite(InsertedObject, var, 1);
-                    var.R2Complete = true;
-                    print("Matched slot 2");
-                }
-                else if (InsertedObject == var.R3 && !var.R3Complete)
-                {
-                    componantMatched = true;
-                    ChangeSprite(InsertedObject, var, 2);
-                    var.R3Complete = true;
-                    print("Matched slot 3");
-                }
-                else if (InsertedObject == var.R4 && !var.R4Complete)
-                {
-                    componantMatched = true;
-                    ChangeSprite(InsertedObject, var, 3);
-                    var.R4Complete = true;
-                    print("Matched slot 4");
+                    featuer.score += 2.0f - Progress;
                 }
                 else
                 {
-                    print("No match!");
-                }
-
-
-                if (componantMatched)
-                {
-                    if (Progress < 0.9f)
-                    {
-                        var.score += Progress;
-                    }
-                    else if (Progress > 1.1f)
-                    {
-                        var.score += 2.0f - Progress;
-                    }
-                    else
-                    {
-                        //give bonus score for neer perfect timing?
-                        var.score += 1.25f;
-                    }
+                    //give bonus score for neer perfect timing?
+                    featuer.score += 1.25f;
                 }
             }
 
