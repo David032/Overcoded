@@ -11,8 +11,9 @@ public class FeatureGeneration : MonoBehaviour
 
     GameObject eventPosition;
     bool hasRan = false;
+    public List<GameObject> RequestedFeatures; 
 
-    void createFeature() 
+    void createFeature()
     {
         Features[featureNumber] = gameObject.AddComponent<Feature>();
         Features[featureNumber].CreateFeature(randomFeature(), randomFeature(), randomFeature(), randomFeature());
@@ -23,15 +24,27 @@ public class FeatureGeneration : MonoBehaviour
         }
         Features[featureNumber].FeatureId = "Feature " + featureNumber.ToString();
 
-        GameObject featureWindow = Instantiate(popUp,eventPosition.transform,true);
-        featureWindow.name = "Feature" + featureNumber.ToString();
-        featureWindow.GetComponent<PopUpUI>().findTheBoss();
-        featureWindow.GetComponent<PopUpUI>().FeatureId = Features[featureNumber].FeatureId;
-        featureWindow.GetComponent<PopUpUI>().PopUp(featureNumber);
-
+        CreateFeatureWindow();
 
         featureNumber += 1;
         Features.AddRange(new Feature[1]);
+
+        for (int i = 0; i < RequestedFeatures.Count; i++)
+        {
+            print("WooWoo");
+        }
+    }
+
+    private void CreateFeatureWindow()
+    {
+        Quaternion rot = Quaternion.Euler(90, 0, 0);
+        GameObject featureWindow = Instantiate(popUp, new Vector3(26.75f, 0.54f, 3.44f), rot, eventPosition.transform);
+        featureWindow.name = "Feature " + featureNumber.ToString();
+        featureWindow.GetComponent<PopUpUI>().findTheBoss();
+        featureWindow.GetComponent<PopUpUI>().FeatureId = Features[featureNumber].FeatureId;
+        featureWindow.GetComponent<PopUpUI>().PopUp(featureNumber);
+        featureWindow.transform.localPosition.Set(10, 10, 10);
+        Features[featureNumber].linkedWindow = featureWindow;
     }
 
     ObjectType randomFeature() 
