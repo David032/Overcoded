@@ -24,36 +24,59 @@ public class FeatureChecking : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         ObjectType InsertedObject = other.gameObject.GetComponent<PlayerController>().GetResourceType();
+        float Progress = other.gameObject.GetComponent<PlayerController>().GetResourceProgress();
+
         if (InsertedObject != ObjectType.NO_RESOURCE)
         {
 
             foreach (Feature var in managerGenerator.Features)
             {
+                bool componantMatched = false;
+
                 if (InsertedObject == var.R1)
                 {
-                    var.score += other.gameObject.GetComponent<PlayerController>().GetResourceProgress();
+                    componantMatched = true;
                     ChangeSprite(InsertedObject, var, 0);
                     var.R1Complete = true;
                 }
                 else if (InsertedObject == var.R2)
                 {
-                    var.score += other.gameObject.GetComponent<PlayerController>().GetResourceProgress();
+                    componantMatched = true;
                     ChangeSprite(InsertedObject, var, 1);
                     var.R2Complete = true;
                 }
                 else if (InsertedObject == var.R3)
                 {
-                    var.score += other.gameObject.GetComponent<PlayerController>().GetResourceProgress();
+                    componantMatched = true;
                     ChangeSprite(InsertedObject, var, 2);
                     var.R3Complete = true;
                 }
                 else if (InsertedObject == var.R4)
                 {
-                    var.score += other.gameObject.GetComponent<PlayerController>().GetResourceProgress();
+                    componantMatched = true;
                     ChangeSprite(InsertedObject, var, 3);
                     var.R4Complete = true;
                 }
+
+
+                if (componantMatched)
+                {
+                    if (Progress < 0.9f)
+                    {
+                        var.score += Progress;
+                    }
+                    else if (Progress > 1.1f)
+                    {
+                        var.score += 2.0f - Progress;
+                    }
+                    else
+                    {
+                        //give bonus score for neer perfect timing?
+                        var.score += 1.25f;
+                    }
+                }
             }
+
 
             //PlaceHeldObject must hapen ater all information has been colected as it resets all values
             other.gameObject.GetComponent<PlayerController>().PlaceHeldObject();
