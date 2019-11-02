@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3084470696501843620}
   - component: {fileID: 2725874922545370547}
   - component: {fileID: 8552415887892378690}
+  - component: {fileID: -7549096106235437362}
   m_Layer: 0
   m_Name: Manager
   m_TagString: GameController

@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement; //Debug function, remove for final?
+using UnityEngine.SceneManagement; 
 
 public class FeatureGeneration : MonoBehaviour
 {
@@ -14,7 +14,7 @@ public class FeatureGeneration : MonoBehaviour
     public List<GameObject> RequestedFeatures;
     GameObject lastFeature;
 
-    void createFeature()
+    public void createFeature() 
     {
         //At most, 6 features should be generated, so if it goes past that, we'll need to delete the oldest one?
         Features[featureNumber] = gameObject.AddComponent<Feature>();
