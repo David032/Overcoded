@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
 
 
     ObjectType resourceType = ObjectType.NO_RESOURCE; //DEBUG - CHANGE TO PRIVATE FOR RELEASE
-    public float resourceProgress;
+    float resourceProgress;
 
     public Material progressNone;
     public Material progressGold;
@@ -44,12 +44,6 @@ public class PlayerController : MonoBehaviour
                 agent.destination = hit.point;
             }
         }
-    }
-
-
-    public ObjectType GetHeldObjectType()
-    {
-        return resourceType;
     }
 
     public void PickUpObject(Sprite sprite, ObjectType objectType, float progress = 0)
@@ -120,8 +114,13 @@ public class PlayerController : MonoBehaviour
         canMove = false;
     }
 
-    public ObjectType getResource() 
+    public ObjectType GetResourceType()
     {
         return resourceType;
+    }
+
+    public float GetResourceProgress()
+    {
+        return resourceProgress;
     }
 }

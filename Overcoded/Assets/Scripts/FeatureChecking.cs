@@ -23,39 +23,41 @@ public class FeatureChecking : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        ObjectType InsertedObject = other.gameObject.GetComponent<PlayerController>().getResource();
+        ObjectType InsertedObject = other.gameObject.GetComponent<PlayerController>().GetResourceType();
         if (InsertedObject != ObjectType.NO_RESOURCE)
         {
-            other.gameObject.GetComponent<PlayerController>().PlaceHeldObject(); //If we can't sort scaling, this may have to sadly be diabled
-            //Play animation, or if we run out of time, particle effect over it & pipeline
 
             foreach (Feature var in managerGenerator.Features)
             {
                 if (InsertedObject == var.R1)
                 {
-                    var.score += other.gameObject.GetComponent<PlayerController>().resourceProgress;
+                    var.score += other.gameObject.GetComponent<PlayerController>().GetResourceProgress();
                     ChangeSprite(InsertedObject, var, 0);
                     var.R1Complete = true;
                 }
                 else if (InsertedObject == var.R2)
                 {
-                    var.score += other.gameObject.GetComponent<PlayerController>().resourceProgress;
+                    var.score += other.gameObject.GetComponent<PlayerController>().GetResourceProgress();
                     ChangeSprite(InsertedObject, var, 1);
                     var.R2Complete = true;
                 }
                 else if (InsertedObject == var.R3)
                 {
-                    var.score += other.gameObject.GetComponent<PlayerController>().resourceProgress;
+                    var.score += other.gameObject.GetComponent<PlayerController>().GetResourceProgress();
                     ChangeSprite(InsertedObject, var, 2);
                     var.R3Complete = true;
                 }
                 else if (InsertedObject == var.R4)
                 {
-                    var.score += other.gameObject.GetComponent<PlayerController>().resourceProgress;
+                    var.score += other.gameObject.GetComponent<PlayerController>().GetResourceProgress();
                     ChangeSprite(InsertedObject, var, 3);
                     var.R4Complete = true;
                 }
             }
+
+            //PlaceHeldObject must hapen ater all information has been colected as it resets all values
+            other.gameObject.GetComponent<PlayerController>().PlaceHeldObject();
+            //Play animation, or if we run out of time, particle effect over it & pipeline
         }
     }
 
@@ -68,13 +70,13 @@ public class FeatureChecking : MonoBehaviour
                 var.linkedWindow.GetComponent<PopUpUI>().resource[spotNum].GetComponent<SpriteRenderer>().sprite = completedArt;
                 break;
             case ObjectType.PROCESSED_CODE:
-                var.linkedWindow.GetComponent<PopUpUI>().resource[spotNum].GetComponent<SpriteRenderer>().sprite = completedArt;
+                var.linkedWindow.GetComponent<PopUpUI>().resource[spotNum].GetComponent<SpriteRenderer>().sprite = completedCode;
                 break;
             case ObjectType.PROCESSED_AUDIO:
-                var.linkedWindow.GetComponent<PopUpUI>().resource[spotNum].GetComponent<SpriteRenderer>().sprite = completedArt;
+                var.linkedWindow.GetComponent<PopUpUI>().resource[spotNum].GetComponent<SpriteRenderer>().sprite = completedAudio;
                 break;
             case ObjectType.PROCESSED_CONCEPTS:
-                var.linkedWindow.GetComponent<PopUpUI>().resource[spotNum].GetComponent<SpriteRenderer>().sprite = completedArt;
+                var.linkedWindow.GetComponent<PopUpUI>().resource[spotNum].GetComponent<SpriteRenderer>().sprite = completedDesign;
                 break;
             default:
                 break;
