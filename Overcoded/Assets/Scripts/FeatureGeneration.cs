@@ -38,13 +38,10 @@ public class FeatureGeneration : MonoBehaviour
             foreach (GameObject item in RequestedFeatures)
             {
                 item.transform.Translate(0, 3, 0);
-                print("Translated");
-
             }
-            //lastFeature.transform.Translate(0, 3, 0);
         }
         Quaternion rot = Quaternion.Euler(90, 0, 0);
-        GameObject featureWindow = Instantiate(popUp, new Vector3(26.75f, 0.54f, 3.44f), rot, eventPosition.transform);
+        GameObject featureWindow = Instantiate(popUp, new Vector3(36.9f, 0.5f, 1.2f), rot, eventPosition.transform);
         featureWindow.name = "Feature " + featureNumber.ToString();
         featureWindow.GetComponent<PopUpUI>().findTheBoss();
         featureWindow.GetComponent<PopUpUI>().FeatureId = Features[featureNumber].FeatureId;
