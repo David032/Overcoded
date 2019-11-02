@@ -27,7 +27,6 @@ public class FeatureGeneration : MonoBehaviour
         CreateFeatureWindow();
 
         featureNumber += 1;
-        Features.AddRange(new Feature[1]);
 
         for (int i = 0; i < RequestedFeatures.Count; i++)
         {
@@ -79,6 +78,7 @@ public class FeatureGeneration : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Return)) //Debug function
         {
+            Features.AddRange(new Feature[1]);
             createFeature();
         }
 

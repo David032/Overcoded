@@ -44,7 +44,7 @@ public class ProcessResource : MonoBehaviour
         {
             if (!procesing)
             {
-                if (other.GetComponent<PlayerController>().GetHeldObjectType() == inputResourceType)
+                if (other.GetComponent<PlayerController>().GetResourceType() == inputResourceType)
                 {
                     other.GetComponent<PlayerController>().ClearHeldObject();
                     procesing = true;
