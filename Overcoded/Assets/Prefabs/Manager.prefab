@@ -76,7 +76,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Features: []
   featureNumber: 0
-  popUp: {fileID: 0}
+  popUp: {fileID: 1984448968228229148, guid: 33dced336923c5b4cb862e2be365affa, type: 3}
+  RequestedFeatures: []
 --- !u!114 &8552415887892378690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89,3 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 512b5a91b58f34b4e87fe7c5a377faa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  completedCode: {fileID: 21300000, guid: 5fb395490de30e849b1e33d5b1d7cb09, type: 3}
+  completedAudio: {fileID: 21300000, guid: 69c6169483dad214dba115a52452e2ed, type: 3}
+  completedDesign: {fileID: 21300000, guid: 8fc3692c1b85c5c4790de1a6752a0340, type: 3}
+  completedArt: {fileID: 21300000, guid: d8ee00c7565ecaa46918b25030fe4bd3, type: 3}

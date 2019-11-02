@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     public SpriteRenderer spriteRenderer; //This has to be manually set as doing it via GetComponentInChildren gets the player's spriterenderer
 
 
-    ObjectType resourceType = ObjectType.NO_RESOURCE;
+    ObjectType resourceType = ObjectType.NO_RESOURCE; //DEBUG - CHANGE TO PRIVATE FOR RELEASE
     public float resourceProgress;
 
     public Material progressNone;
@@ -79,8 +79,13 @@ public class PlayerController : MonoBehaviour
             resource.AddComponent<ResourceState>();
             resource.GetComponent<ResourceState>().Set(resourceType, resourceProgress);
 
+            Quaternion rot = Quaternion.Euler(90,0,0);
+            resource.transform.position = transform.position;
+            resource.transform.rotation = rot;
+            resource.transform.localScale.Set(0.15f, 0.15f, 1); //This isn't scaling properly and I don't know why :(
+            resource.transform.localScale.Scale(new Vector3(0.15f, 0.15f, 1));
 
-            Instantiate(resource, transform.position, new Quaternion(0.25f, 0.0f, 0.0f, 0.0f));
+            //Instantiate(resource, transform.position, rot); - The moment a new gameobject is created, it's spawned in the worldspace
 
             ClearHeldObject();
         }
@@ -113,5 +118,10 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(5);
         canMove = false;
+    }
+
+    public ObjectType getResource() 
+    {
+        return resourceType;
     }
 }

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PopUpUI : MonoBehaviour
 {
+    public string FeatureId;
+
     public FeatureGeneration featureGenerator;
     public GameObject[] resource;
     public Sprite audioSprite;
@@ -15,7 +17,7 @@ public class PopUpUI : MonoBehaviour
     ObjectType r3;
     ObjectType r4;
 
-    public string FeatureId;
+
 
     public void findTheBoss() 
     {
@@ -34,11 +36,6 @@ public class PopUpUI : MonoBehaviour
 
     public void LoadResource(int fNum)
     {
-        print(r1);
-        print(r2);
-        print(r3);
-        print(r4);
-        //switches on each feature and sets the sprite
         switch (r1)
         {
             case ObjectType.PROCESSED_AUDIO:

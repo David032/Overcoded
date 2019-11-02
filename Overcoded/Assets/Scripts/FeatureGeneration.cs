@@ -44,6 +44,7 @@ public class FeatureGeneration : MonoBehaviour
         featureWindow.GetComponent<PopUpUI>().FeatureId = Features[featureNumber].FeatureId;
         featureWindow.GetComponent<PopUpUI>().PopUp(featureNumber);
         featureWindow.transform.localPosition.Set(10, 10, 10);
+        Features[featureNumber].linkedWindow = featureWindow;
     }
 
     ObjectType randomFeature() 

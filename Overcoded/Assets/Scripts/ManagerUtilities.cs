@@ -9,6 +9,11 @@ public class ManagerUtilities : MonoBehaviour
     public float getWidth() { return screenWidth; }
     public float getHeight() { return screenHeight; }
 
+    public Sprite completedCode;
+    public Sprite completedAudio;
+    public Sprite completedDesign;
+    public Sprite completedArt;
+
     void Start()
     {
         screenHeight = Screen.height;
