@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement; //Debug function, remove for final?
+using UnityEngine.SceneManagement; 
 
 public class FeatureGeneration : MonoBehaviour
 {
@@ -12,7 +12,7 @@ public class FeatureGeneration : MonoBehaviour
     GameObject eventPosition;
     bool hasRan = false;
 
-    void createFeature() 
+    public void createFeature() 
     {
         Features[featureNumber] = gameObject.AddComponent<Feature>();
         Features[featureNumber].CreateFeature(randomFeature(), randomFeature(), randomFeature(), randomFeature());
