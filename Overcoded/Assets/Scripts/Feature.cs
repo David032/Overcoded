@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Feature : MonoBehaviour
 {
+    public int FeatureId;
+    public float score = 0;
+
     public ObjectType R1;
     public ObjectType R2;
     public ObjectType R3;
@@ -14,10 +17,7 @@ public class Feature : MonoBehaviour
     public bool R3Complete;
     public bool R4Complete;
 
-    public float score = 0;
-    public string FeatureId;
-
-    public GameObject linkedWindow; //make private for release
+    GameObject linkedWindow; //make private for release
 
     public Feature() { }
 
@@ -55,7 +55,17 @@ public class Feature : MonoBehaviour
         if (R1Complete && R2Complete && R3Complete && R4Complete)
         {
             //Add score to total score
-            //Destroy this feature
+            GetComponent<FeatureGeneration>().deleteFeature(FeatureId);
+            Destroy(this);
         }
+    }
+
+    public GameObject getLinkedWindow() 
+    {
+        return linkedWindow;
+    }
+    public void setLinkedWindow(GameObject window) 
+    {
+        linkedWindow = window;
     }
 }

@@ -75,16 +75,16 @@ public class FeatureChecking : MonoBehaviour
         switch (InsertedObject)
         {
             case ObjectType.PROCESSED_SHAPES:
-                var.linkedWindow.GetComponent<PopUpUI>().resource[spotNum].GetComponent<SpriteRenderer>().sprite = completedArt;
+                var.getLinkedWindow().GetComponent<PopUpUI>().resource[spotNum].GetComponent<SpriteRenderer>().sprite = completedArt;
                 break;
             case ObjectType.PROCESSED_CODE:
-                var.linkedWindow.GetComponent<PopUpUI>().resource[spotNum].GetComponent<SpriteRenderer>().sprite = completedCode;
+                var.getLinkedWindow().GetComponent<PopUpUI>().resource[spotNum].GetComponent<SpriteRenderer>().sprite = completedCode;
                 break;
             case ObjectType.PROCESSED_AUDIO:
-                var.linkedWindow.GetComponent<PopUpUI>().resource[spotNum].GetComponent<SpriteRenderer>().sprite = completedAudio;
+                var.getLinkedWindow().GetComponent<PopUpUI>().resource[spotNum].GetComponent<SpriteRenderer>().sprite = completedAudio;
                 break;
             case ObjectType.PROCESSED_CONCEPTS:
-                var.linkedWindow.GetComponent<PopUpUI>().resource[spotNum].GetComponent<SpriteRenderer>().sprite = completedDesign;
+                var.getLinkedWindow().GetComponent<PopUpUI>().resource[spotNum].GetComponent<SpriteRenderer>().sprite = completedDesign;
                 break;
             default:
                 break;

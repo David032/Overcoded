@@ -22,7 +22,7 @@ public class FeatureGeneration : MonoBehaviour
         {
             createFeature();
         }
-        Features[featureNumber].FeatureId = "Feature " + featureNumber.ToString();
+        Features[featureNumber].FeatureId = featureNumber;
 
         CreateFeatureWindow();
 
@@ -42,8 +42,7 @@ public class FeatureGeneration : MonoBehaviour
         featureWindow.GetComponent<PopUpUI>().findTheBoss();
         featureWindow.GetComponent<PopUpUI>().FeatureId = Features[featureNumber].FeatureId;
         featureWindow.GetComponent<PopUpUI>().PopUp(featureNumber);
-        featureWindow.transform.localPosition.Set(10, 10, 10);
-        Features[featureNumber].linkedWindow = featureWindow;
+        Features[featureNumber].setLinkedWindow(featureWindow);
     }
 
     ObjectType randomFeature() 
@@ -90,5 +89,10 @@ public class FeatureGeneration : MonoBehaviour
 
             hasRan = true;
         }
+    }
+
+    public void deleteFeature(int id) 
+    {
+        GameObject.Destroy(Features[id].getLinkedWindow().gameObject); //Deletes pop up        
     }
 }
