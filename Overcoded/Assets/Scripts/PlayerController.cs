@@ -20,18 +20,22 @@ public class PlayerController : MonoBehaviour
     public SpriteRenderer spriteRenderer; //This has to be manually set as doing it via GetComponentInChildren gets the player's spriterenderer
 
 
-    ObjectType resourceType = ObjectType.NO_RESOURCE; 
+    public ObjectType resourceType = ObjectType.NO_RESOURCE; 
     float resourceProgress;
 
     public Material progressNone;
     public Material progressGold;
     public Material progressMud;
 
+    public bool isHolding = false;
+
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         rb = GetComponent<Rigidbody>();
     }
+
+    public bool amHolding() { return isHolding; }
 
     void Update()
     {
@@ -48,16 +52,21 @@ public class PlayerController : MonoBehaviour
 
     public void PickUpObject(Sprite sprite, ObjectType objectType, float progress = 0)
     {
-        spriteRenderer.sprite = sprite;
-        resourceType = objectType;
-        resourceProgress = progress;
-        if (progress < 1.0f)
+        if (this.resourceType == ObjectType.NO_RESOURCE && !isHolding)
         {
-            spriteRenderer.material.Lerp(progressNone, progressGold, progress);
-        }
-        else
-        {
-            spriteRenderer.material.Lerp(progressGold, progressMud, progress - 1);
+            spriteRenderer.sprite = sprite;
+            resourceType = objectType;
+            resourceProgress = progress;
+
+            if (progress < 1.0f)
+            {
+                spriteRenderer.material.Lerp(progressNone, progressGold, progress);
+            }
+            else
+            {
+                spriteRenderer.material.Lerp(progressGold, progressMud, progress - 1);
+            }
+            isHolding = true;
         }
     }
 
@@ -86,7 +95,7 @@ public class PlayerController : MonoBehaviour
     {
         spriteRenderer.sprite = null;
         resourceType = ObjectType.NO_RESOURCE;
-
+        isHolding = false;
         resourceProgress = 0;
     }
 

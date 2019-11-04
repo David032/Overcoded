@@ -111,6 +111,24 @@ public class FeatureGeneration : MonoBehaviour
     {
         Destroy(Features[id].getLinkedWindow()); //Deletes pop up // do before removing from list 
         Features.Remove(id);
-        RequestedFeatures.Remove(id);     
+        RequestedFeatures.Remove(id);
+
+        for (int i = 1; i < Features.Count; i++)
+        {
+            if (!FeatureTweaking.ChangeKey(Features,i,i-1))
+            {
+                print("FAILED TO CHANGE ID");
+            }
+        }
+        for (int i = 1; i < RequestedFeatures.Count; i++)
+        {
+            if (!FeatureTweaking.ChangeKey(RequestedFeatures, i, i - 1))
+            {
+                print("FAILED TO CHANGE ID");
+            }
+        }
+
     }
+
+
 }
