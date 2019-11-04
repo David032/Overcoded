@@ -8,6 +8,7 @@ public class PopUpUI : MonoBehaviour
     public int FeatureId;
 
     public FeatureGeneration featureGenerator;
+    public Feature getScore;
     public GameObject[] resource;
     public Sprite audioSprite;
     public Sprite codeSprite;
@@ -22,6 +23,7 @@ public class PopUpUI : MonoBehaviour
     public void findTheBoss() 
     {
         featureGenerator = GameObject.FindGameObjectWithTag("GameController").GetComponent<FeatureGeneration>();
+        getScore = GameObject.FindGameObjectWithTag("GameController").GetComponent<Feature>();
     }
 
     public void PopUp(int fNum)
@@ -33,6 +35,10 @@ public class PopUpUI : MonoBehaviour
         r3 = featureGenerator.Features[fNum].R3;
         r4 = featureGenerator.Features[fNum].R4;
         LoadResource(fNum);
+    }
+
+    public void Update()
+    {
         ScoreDisplay();
     }
 
@@ -118,7 +124,7 @@ public class PopUpUI : MonoBehaviour
     }
     public void ScoreDisplay()
     {
-        score.text = "Score:" + featureGenerator.totalScore;
+        score.text = "Score:" + getScore.score.ToString();
     }
 }
 
