@@ -19,6 +19,7 @@ public class GameController : MonoBehaviour
         if (SceneManager.GetActiveScene().buildIndex == 1 )
         {
             StartCoroutine(EventTimer());
+            StopCoroutine(EventTimer());
         }
     }
 

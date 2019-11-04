@@ -8,9 +8,10 @@ public class CreateObject : MonoBehaviour
     public ObjectType resourceType;
 
     private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Player")
+    {       
+        if (other.GetComponent<PlayerController>())
         {
+            other.GetComponent<PlayerController>().ClearHeldObject();
             if (other.GetComponent<PlayerController>().GetResourceType() == ObjectType.NO_RESOURCE)
             {
                 other.GetComponent<PlayerController>().PickUpObject(resourceSprite, resourceType);

@@ -78,6 +78,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalScore: 0
+  position: {x: 30.5, y: 0, z: 1}
   featureNumber: 0
   popUp: {fileID: 1984448968228229148, guid: 33dced336923c5b4cb862e2be365affa, type: 3}
 --- !u!114 &8552415887892378690

@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class FeatureGeneration : MonoBehaviour
 {
     public float totalScore;
-
+    public Vector3 position;
     public Dictionary<int ,Feature> Features;
     public int featureNumber = 0;
     public GameObject popUp;
@@ -56,7 +56,7 @@ public class FeatureGeneration : MonoBehaviour
             }
         }
         Quaternion rot = Quaternion.Euler(90, 0, 0);
-        GameObject featureWindow = Instantiate(popUp, new Vector3(36.9f, 0.5f, 1.2f), rot, eventPosition.transform);
+        GameObject featureWindow = Instantiate(popUp, position, rot, eventPosition.transform);
         featureWindow.name = "Feature " + featureNumber.ToString();
         featureWindow.GetComponent<PopUpUI>().findTheBoss();
         featureWindow.GetComponent<PopUpUI>().FeatureId = Features[featureNumber].FeatureId;
@@ -118,6 +118,24 @@ public class FeatureGeneration : MonoBehaviour
     {
         Destroy(Features[id].getLinkedWindow()); //Deletes pop up // do before removing from list 
         Features.Remove(id);
-        RequestedFeatures.Remove(id);     
+        RequestedFeatures.Remove(id);
+
+        for (int i = 1; i < Features.Count; i++)
+        {
+            if (!FeatureTweaking.ChangeKey(Features,i,i-1))
+            {
+                print("FAILED TO CHANGE ID");
+            }
+        }
+        for (int i = 1; i < RequestedFeatures.Count; i++)
+        {
+            if (!FeatureTweaking.ChangeKey(RequestedFeatures, i, i - 1))
+            {
+                print("FAILED TO CHANGE ID");
+            }
+        }
+
     }
+
+
 }
