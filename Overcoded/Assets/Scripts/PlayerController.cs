@@ -116,7 +116,7 @@ public class PlayerController : MonoBehaviour
         audio.PlayPickupitem();
     }
 
-    public void PlaceHeldObject()
+    public void PlaceHeldObject(GameObject dropPoint)
     {
         if(resourceType != ObjectType.NO_RESOURCE)
         {
@@ -129,7 +129,7 @@ public class PlayerController : MonoBehaviour
             resource.GetComponent<ResourceState>().Set(resourceType, resourceProgress);
 
             Quaternion rot = Quaternion.Euler(90,0,0);
-            resource.transform.position = transform.position;
+            resource.transform.position = dropPoint.transform.position;
             resource.transform.rotation = rot;
 
             ClearHeldObject();
@@ -144,14 +144,6 @@ public class PlayerController : MonoBehaviour
         resourceType = ObjectType.NO_RESOURCE;
         isHolding = false;
         resourceProgress = 0;
-    }
-
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Resource")
-        {
-            iconRenderer.sprite = other.gameObject.GetComponentInChildren<SpriteRenderer>().sprite;
-        }
     }
 
     private void OnMouseDown()
