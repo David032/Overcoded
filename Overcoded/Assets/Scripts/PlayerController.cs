@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     public SpriteRenderer iconRenderer; //This has to be manually set as doing it via GetComponentInChildren gets the player's spriterenderer
     public GameObject playerSprite;
     SpriteRenderer playerRenderer;
+    bool isHighlighted;
 
 
     public ObjectType resourceType = ObjectType.NO_RESOURCE; 
@@ -38,11 +39,13 @@ public class PlayerController : MonoBehaviour
     public Sprite APlayer;
     bool aPlayer;
     public Sprite APLayerAlt;
+    public Sprite APLayerHighlighted;
+    public Sprite APLayerAltHighlighted;
     public Sprite BPlayer;
     bool bPlayer;
     public Sprite BPLayerAlt;
-
-    public Sprite highlighted;
+    public Sprite BPLayerHighlighted;
+    public Sprite BPLayerAltHighlighted;
 
 
     void Start()
@@ -70,7 +73,6 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         spriteChange();
-
         if (Input.GetMouseButtonDown(0) && canMove)
         {
             RaycastHit hit;
@@ -87,21 +89,39 @@ public class PlayerController : MonoBehaviour
 
     private void spriteChange()
     {
-        //if (resourceType != ObjectType.NO_RESOURCE && aPlayer)
-        //{
-        //    playerRenderer.sprite = APLayerAlt;
-        //}
-        //else if (resourceType == ObjectType.NO_RESOURCE && aPlayer)
-        //{
-        //    playerRenderer.sprite = APlayer;
-        //}
-        if (resourceType != ObjectType.NO_RESOURCE && bPlayer)
+        if (resourceType != ObjectType.NO_RESOURCE && aPlayer && !canMove)
+        {
+            playerRenderer.sprite = APLayerAlt;
+        }
+        if (resourceType == ObjectType.NO_RESOURCE && aPlayer && !canMove)
+        {
+            playerRenderer.sprite = APlayer;
+        }
+        if (resourceType == ObjectType.NO_RESOURCE && aPlayer && canMove)
+        {
+            playerRenderer.sprite = APLayerHighlighted;
+        }
+        if (resourceType != ObjectType.NO_RESOURCE && aPlayer && canMove)
+        {
+            playerRenderer.sprite = APLayerAltHighlighted;
+        }
+
+
+        if (resourceType != ObjectType.NO_RESOURCE && bPlayer && !canMove)
         {
             playerRenderer.sprite = BPLayerAlt;
         }
-        else if (resourceType == ObjectType.NO_RESOURCE && bPlayer)
+        if (resourceType == ObjectType.NO_RESOURCE && bPlayer && !canMove)
         {
             playerRenderer.sprite = BPlayer;
+        }
+        if(resourceType == ObjectType.NO_RESOURCE && bPlayer && canMove)
+        {
+            playerRenderer.sprite = BPLayerHighlighted;
+        }
+        if (resourceType != ObjectType.NO_RESOURCE && bPlayer && canMove)
+        {
+            playerRenderer.sprite = BPLayerAltHighlighted;
         }
     }
 
@@ -159,14 +179,12 @@ public class PlayerController : MonoBehaviour
     private void OnMouseDown()
     {
         canMove = true;
-        playerRenderer.sprite = highlighted;
         StartCoroutine(countdown());
     }
 
     IEnumerator countdown() 
     {
         yield return new WaitForSeconds(5);
-        playerRenderer.sprite = BPlayer;
         canMove = false;
         audio.StopAudio();
     }

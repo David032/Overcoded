@@ -288,6 +288,36 @@ PrefabInstance:
       propertyPath: playerSprite
       value: 
       objectReference: {fileID: 1953083022}
+    - target: {fileID: 7669967040220779825, guid: 4be02b676c91fa24184ae323e0fd633c,
+        type: 3}
+      propertyPath: highlightedArmsUp
+      value: 
+      objectReference: {fileID: 21300000, guid: e099110889694dd43be658faf800ec84,
+        type: 3}
+    - target: {fileID: 7669967040220779825, guid: 4be02b676c91fa24184ae323e0fd633c,
+        type: 3}
+      propertyPath: BPLayerHighlighted
+      value: 
+      objectReference: {fileID: 21300000, guid: 4b6e9a8164c42f045a4555cb36da3c58,
+        type: 3}
+    - target: {fileID: 7669967040220779825, guid: 4be02b676c91fa24184ae323e0fd633c,
+        type: 3}
+      propertyPath: BPLayerAltHighlighted
+      value: 
+      objectReference: {fileID: 21300000, guid: e099110889694dd43be658faf800ec84,
+        type: 3}
+    - target: {fileID: 7669967040220779825, guid: 4be02b676c91fa24184ae323e0fd633c,
+        type: 3}
+      propertyPath: APLayerHighlighted
+      value: 
+      objectReference: {fileID: 21300000, guid: 1052d82c02989b64ea9fc03f7684c9cc,
+        type: 3}
+    - target: {fileID: 7669967040220779825, guid: 4be02b676c91fa24184ae323e0fd633c,
+        type: 3}
+      propertyPath: APLayerAltHighlighted
+      value: 
+      objectReference: {fileID: 21300000, guid: 04f7eddfef2c6e34aa864ca224e64219,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4be02b676c91fa24184ae323e0fd633c, type: 3}
 --- !u!1 &588884435
@@ -936,6 +966,30 @@ PrefabInstance:
       propertyPath: playerSprite
       value: 
       objectReference: {fileID: 1082669605}
+    - target: {fileID: 7669967040220779825, guid: 4be02b676c91fa24184ae323e0fd633c,
+        type: 3}
+      propertyPath: APLayerHighlighted
+      value: 
+      objectReference: {fileID: 21300000, guid: 1052d82c02989b64ea9fc03f7684c9cc,
+        type: 3}
+    - target: {fileID: 7669967040220779825, guid: 4be02b676c91fa24184ae323e0fd633c,
+        type: 3}
+      propertyPath: APLayerAltHighlighted
+      value: 
+      objectReference: {fileID: 21300000, guid: 04f7eddfef2c6e34aa864ca224e64219,
+        type: 3}
+    - target: {fileID: 7669967040220779825, guid: 4be02b676c91fa24184ae323e0fd633c,
+        type: 3}
+      propertyPath: BPLayerHighlighted
+      value: 
+      objectReference: {fileID: 21300000, guid: 4b6e9a8164c42f045a4555cb36da3c58,
+        type: 3}
+    - target: {fileID: 7669967040220779825, guid: 4be02b676c91fa24184ae323e0fd633c,
+        type: 3}
+      propertyPath: BPLayerAltHighlighted
+      value: 
+      objectReference: {fileID: 21300000, guid: e099110889694dd43be658faf800ec84,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4be02b676c91fa24184ae323e0fd633c, type: 3}
 --- !u!1001 &1608275549
@@ -1100,6 +1154,30 @@ PrefabInstance:
       propertyPath: playerSprite
       value: 
       objectReference: {fileID: 1989744382}
+    - target: {fileID: 7669967040220779825, guid: 4be02b676c91fa24184ae323e0fd633c,
+        type: 3}
+      propertyPath: APLayerHighlighted
+      value: 
+      objectReference: {fileID: 21300000, guid: 1052d82c02989b64ea9fc03f7684c9cc,
+        type: 3}
+    - target: {fileID: 7669967040220779825, guid: 4be02b676c91fa24184ae323e0fd633c,
+        type: 3}
+      propertyPath: APLayerAltHighlighted
+      value: 
+      objectReference: {fileID: 21300000, guid: 04f7eddfef2c6e34aa864ca224e64219,
+        type: 3}
+    - target: {fileID: 7669967040220779825, guid: 4be02b676c91fa24184ae323e0fd633c,
+        type: 3}
+      propertyPath: BPLayerHighlighted
+      value: 
+      objectReference: {fileID: 21300000, guid: 4b6e9a8164c42f045a4555cb36da3c58,
+        type: 3}
+    - target: {fileID: 7669967040220779825, guid: 4be02b676c91fa24184ae323e0fd633c,
+        type: 3}
+      propertyPath: BPLayerAltHighlighted
+      value: 
+      objectReference: {fileID: 21300000, guid: e099110889694dd43be658faf800ec84,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4be02b676c91fa24184ae323e0fd633c, type: 3}
 --- !u!1001 &1723971204
@@ -1424,6 +1502,30 @@ PrefabInstance:
       propertyPath: playerSprite
       value: 
       objectReference: {fileID: 368505257}
+    - target: {fileID: 7669967040220779825, guid: 4be02b676c91fa24184ae323e0fd633c,
+        type: 3}
+      propertyPath: APLayerHighlighted
+      value: 
+      objectReference: {fileID: 21300000, guid: 1052d82c02989b64ea9fc03f7684c9cc,
+        type: 3}
+    - target: {fileID: 7669967040220779825, guid: 4be02b676c91fa24184ae323e0fd633c,
+        type: 3}
+      propertyPath: APLayerAltHighlighted
+      value: 
+      objectReference: {fileID: 21300000, guid: 04f7eddfef2c6e34aa864ca224e64219,
+        type: 3}
+    - target: {fileID: 7669967040220779825, guid: 4be02b676c91fa24184ae323e0fd633c,
+        type: 3}
+      propertyPath: BPLayerHighlighted
+      value: 
+      objectReference: {fileID: 21300000, guid: 4b6e9a8164c42f045a4555cb36da3c58,
+        type: 3}
+    - target: {fileID: 7669967040220779825, guid: 4be02b676c91fa24184ae323e0fd633c,
+        type: 3}
+      propertyPath: BPLayerAltHighlighted
+      value: 
+      objectReference: {fileID: 21300000, guid: e099110889694dd43be658faf800ec84,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4be02b676c91fa24184ae323e0fd633c, type: 3}
 --- !u!1 &2146443932
