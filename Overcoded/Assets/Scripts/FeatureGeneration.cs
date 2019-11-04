@@ -7,7 +7,7 @@ public class FeatureGeneration : MonoBehaviour
 {
     public float totalScore;
     public Vector3 position;
-    public Dictionary<int ,Feature> Features;
+    public List<Feature> Features;
     public int featureNumber = 0;
     public GameObject popUp;
 
@@ -15,7 +15,6 @@ public class FeatureGeneration : MonoBehaviour
 
     GameObject eventPosition;
     bool hasRan = false;
-    public Dictionary<int, GameObject> RequestedFeatures;
     GameObject lastFeature;
 
     private void Start()
@@ -39,21 +38,18 @@ public class FeatureGeneration : MonoBehaviour
         }
         newFeature.FeatureId = featureNumber;
 
-        Features.Add(featureNumber, newFeature);
+        Features.Add(newFeature);
         CreateFeatureWindow();
 
-        featureNumber += 1;
+        featureNumber = Features.Count;
         audio.Playgibberish();
     }
 
     private void CreateFeatureWindow()
     {
-        if (lastFeature != null)
+        foreach (Feature item in Features)
         {
-            foreach (GameObject item in RequestedFeatures.Values)
-            {
-                item.transform.Translate(0, 3, 0);
-            }
+            item.MoveLinkedWindow();
         }
         Quaternion rot = Quaternion.Euler(90, 0, 0);
         GameObject featureWindow = Instantiate(popUp, position, rot, eventPosition.transform);
@@ -62,9 +58,6 @@ public class FeatureGeneration : MonoBehaviour
         featureWindow.GetComponent<PopUpUI>().FeatureId = Features[featureNumber].FeatureId;
         featureWindow.GetComponent<PopUpUI>().PopUp(featureNumber);
         Features[featureNumber].setLinkedWindow(featureWindow);
-        lastFeature = featureWindow;
-
-        RequestedFeatures.Add(featureNumber, featureWindow);
     }
 
     ObjectType randomFeature() 
@@ -104,8 +97,7 @@ public class FeatureGeneration : MonoBehaviour
 
         if (SceneManager.GetActiveScene().buildIndex == 1 && !hasRan) 
         {
-            Features = new Dictionary<int, Feature>();
-            RequestedFeatures = new Dictionary<int, GameObject>();
+            Features = new List<Feature>();
 
             eventPosition = GameObject.FindGameObjectWithTag("EventHolder");
             createFeature();
@@ -116,25 +108,14 @@ public class FeatureGeneration : MonoBehaviour
 
     public void deleteFeature(int id) 
     {
-        Destroy(Features[id].getLinkedWindow()); //Deletes pop up // do before removing from list 
-        Features.Remove(id);
-        RequestedFeatures.Remove(id);
+        Features[id].DeleteLinkedWindow();
+        Features.RemoveAt(id);
 
-        for (int i = 1; i < Features.Count; i++)
+        for (int i = 0; i < Features.Count; i++)
         {
-            if (!FeatureTweaking.ChangeKey(Features,i,i-1))
-            {
-                print("FAILED TO CHANGE ID");
-            }
+            Features[i].FeatureId = i;
         }
-        for (int i = 1; i < RequestedFeatures.Count; i++)
-        {
-            if (!FeatureTweaking.ChangeKey(RequestedFeatures, i, i - 1))
-            {
-                print("FAILED TO CHANGE ID");
-            }
-        }
-
+        featureNumber = Features.Count;
     }
 
 
