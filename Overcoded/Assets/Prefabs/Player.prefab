@@ -198,12 +198,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocity: {x: 0, y: 0, z: 0}
   canMove: 0
-  spriteRenderer: {fileID: 7669967039905006016}
+  iconRenderer: {fileID: 7669967039905006016}
   resourceType: 0
   progressNone: {fileID: 2100000, guid: e91e9473d787e864ab9cc6ea32a52084, type: 2}
   progressGold: {fileID: 2100000, guid: e736ec08c5b69f14485edc7a74493c43, type: 2}
   progressMud: {fileID: 2100000, guid: 3368e4f87be13834cb5b75f72dc05e7b, type: 2}
   isHolding: 0
+  APlayer: {fileID: 21300000, guid: 4979d0bc6ae88e146aac8b5db2da5f8b, type: 3}
+  APLayerAlt: {fileID: 21300000, guid: 056dcac9987196f459a59860565539c6, type: 3}
+  BPlayer: {fileID: 21300000, guid: 7aa0d6ea637539240953bac0edc43354, type: 3}
+  BPLayerAlt: {fileID: 21300000, guid: 9e4aa3ee35eea0148b5e4527ce1bc889, type: 3}
 --- !u!114 &5633025140998801984
 MonoBehaviour:
   m_ObjectHideFlags: 0
