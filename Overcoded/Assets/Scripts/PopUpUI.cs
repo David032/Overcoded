@@ -1,17 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PopUpUI : MonoBehaviour
 {
     public int FeatureId;
 
     public FeatureGeneration featureGenerator;
+    public Feature getScore;
     public GameObject[] resource;
     public Sprite audioSprite;
     public Sprite codeSprite;
     public Sprite conceptsSprite;
     public Sprite shapesSprite;
+    public Text score;
     ObjectType r1;
     ObjectType r2;
     ObjectType r3;
@@ -24,12 +27,18 @@ public class PopUpUI : MonoBehaviour
 
     public void PopUp(int fNum)
     {
+        getScore = featureGenerator.Features[fNum];
         //takes the features and stores them internly 
         r1 = featureGenerator.Features[fNum].R1;
         r2 = featureGenerator.Features[fNum].R2;
         r3 = featureGenerator.Features[fNum].R3;
         r4 = featureGenerator.Features[fNum].R4;
         LoadResource(fNum);
+    }
+
+    public void Update()
+    {
+        ScoreDisplay();
     }
 
     public void LoadResource(int fNum)
@@ -111,6 +120,10 @@ public class PopUpUI : MonoBehaviour
                 break;
         }
         
+    }
+    public void ScoreDisplay()
+    {
+        score.text = "Score:" + getScore.score.ToString();
     }
 }
 
