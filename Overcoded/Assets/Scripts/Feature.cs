@@ -69,4 +69,18 @@ public class Feature : MonoBehaviour
     {
         linkedWindow = window;
     }
+    public void MoveLinkedWindow()
+    {
+        if (linkedWindow)
+        {
+            linkedWindow.transform.Translate(0, 3, 0);
+        }
+    }
+    public void DeleteLinkedWindow()
+    {
+        if (linkedWindow)
+        {
+            Destroy(linkedWindow);
+        }
+    }
 }
