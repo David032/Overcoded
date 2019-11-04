@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
 
     public bool isHolding = false;
 
+
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
