@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
     public Material progressMud;
 
     public bool isHolding = false;
+    public bool move;
 
 
 
@@ -157,15 +158,21 @@ public class PlayerController : MonoBehaviour
 
             resource.AddComponent<ResourceState>();
             resource.GetComponent<ResourceState>().Set(resourceType, resourceProgress);
-
+            resource.AddComponent<MovePipeObject>();
             Quaternion rot = Quaternion.Euler(90,0,0);
             resource.transform.position = dropPoint.transform.position;
             resource.transform.rotation = rot;
 
             ClearHeldObject();
+
+            
+
         }
+
         audio.PlayPlaceitemdown();
+       
     }
+
 
 
     public void ClearHeldObject()
