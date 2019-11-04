@@ -23,12 +23,11 @@ public class PopUpUI : MonoBehaviour
     public void findTheBoss() 
     {
         featureGenerator = GameObject.FindGameObjectWithTag("GameController").GetComponent<FeatureGeneration>();
-        getScore = GameObject.FindGameObjectWithTag("GameController").GetComponent<Feature>();
     }
 
     public void PopUp(int fNum)
     {
-        
+        getScore = featureGenerator.Features[fNum];
         //takes the features and stores them internly 
         r1 = featureGenerator.Features[fNum].R1;
         r2 = featureGenerator.Features[fNum].R2;
