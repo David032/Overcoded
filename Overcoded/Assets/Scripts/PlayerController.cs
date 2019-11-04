@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     AudioController audio;
     public bool canMove;
     public SpriteRenderer iconRenderer; //This has to be manually set as doing it via GetComponentInChildren gets the player's spriterenderer
+    public GameObject playerSprite;
     SpriteRenderer playerRenderer;
 
 
@@ -31,6 +32,9 @@ public class PlayerController : MonoBehaviour
 
     public bool isHolding = false;
 
+
+
+
     public Sprite APlayer;
     bool aPlayer;
     public Sprite APLayerAlt;
@@ -38,11 +42,15 @@ public class PlayerController : MonoBehaviour
     bool bPlayer;
     public Sprite BPLayerAlt;
 
+    public Sprite highlighted;
+
+
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         rb = GetComponent<Rigidbody>();
         audio = GetComponent<AudioController>();
+        playerRenderer = playerSprite.GetComponent<SpriteRenderer>();
 
         int rndNumber = Random.Range(0, 2);
         if (rndNumber == 0)
@@ -75,16 +83,18 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+
+
     private void spriteChange()
     {
-        if (resourceType != ObjectType.NO_RESOURCE && aPlayer)
-        {
-            playerRenderer.sprite = APLayerAlt;
-        }
-        else if (resourceType == ObjectType.NO_RESOURCE && aPlayer)
-        {
-            playerRenderer.sprite = APlayer;
-        }
+        //if (resourceType != ObjectType.NO_RESOURCE && aPlayer)
+        //{
+        //    playerRenderer.sprite = APLayerAlt;
+        //}
+        //else if (resourceType == ObjectType.NO_RESOURCE && aPlayer)
+        //{
+        //    playerRenderer.sprite = APlayer;
+        //}
         if (resourceType != ObjectType.NO_RESOURCE && bPlayer)
         {
             playerRenderer.sprite = BPLayerAlt;
@@ -149,12 +159,14 @@ public class PlayerController : MonoBehaviour
     private void OnMouseDown()
     {
         canMove = true;
+        playerRenderer.sprite = highlighted;
         StartCoroutine(countdown());
     }
 
     IEnumerator countdown() 
     {
         yield return new WaitForSeconds(5);
+        playerRenderer.sprite = BPlayer;
         canMove = false;
         audio.StopAudio();
     }
