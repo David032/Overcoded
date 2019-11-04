@@ -21,6 +21,8 @@ public class ProcessResource : MonoBehaviour
     private void Start()
     {
         audio = GetComponent<AudioSource>();
+        progressBar.enabled = false;
+        progressBar1.enabled = false;
     }
 
     // Update is called once per frame
