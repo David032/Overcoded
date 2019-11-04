@@ -16,6 +16,13 @@ public class ProcessResource : MonoBehaviour
     public SpriteRenderer progressBar1;
     public Animator progressAnimation;
 
+    AudioSource audio;
+
+    private void Start()
+    {
+        audio = GetComponent<AudioSource>();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -30,6 +37,10 @@ public class ProcessResource : MonoBehaviour
             progressBar.color = new Color32(194, 24, 24, 255);
             progressBar1.enabled = true;
             progressAnimation.Play("Progress", 0, progress - 1.0f);
+        }
+        if(progress > 1.0f && progress < 2.0f && !audio.isPlaying)
+        {
+            audio.Play();
         }
     }
 
@@ -71,6 +82,7 @@ public class ProcessResource : MonoBehaviour
             progressBar1.enabled = false;
             progressBar.color = new Color32( 24, 170, 24, 255);
             progress = 0;
+            audio.Stop();
         }
     }
 }

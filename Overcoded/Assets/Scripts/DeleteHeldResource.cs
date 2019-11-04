@@ -9,6 +9,7 @@ public class DeleteHeldResource : MonoBehaviour
         if (other.tag == "Player")
         {
             other.GetComponent<PlayerController>().ClearHeldObject();
+            other.GetComponent<AudioController>().Playthrowinbin();
         }
     }
 }

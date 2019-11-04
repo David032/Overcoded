@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
 
     NavMeshAgent agent;
     Rigidbody rb;
+    AudioController audio;
     public bool canMove;
     public SpriteRenderer spriteRenderer; //This has to be manually set as doing it via GetComponentInChildren gets the player's spriterenderer
 
@@ -31,6 +32,7 @@ public class PlayerController : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         rb = GetComponent<Rigidbody>();
+        audio = GetComponent<AudioController>();
     }
 
     void Update()
@@ -42,6 +44,7 @@ public class PlayerController : MonoBehaviour
             if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100))
             {
                 agent.destination = hit.point;
+                audio.Playfootsteps();
             }
         }
     }
@@ -59,6 +62,7 @@ public class PlayerController : MonoBehaviour
         {
             spriteRenderer.material.Lerp(progressGold, progressMud, progress - 1);
         }
+        audio.PlayPickupitem();
     }
 
     public void PlaceHeldObject()
@@ -79,6 +83,7 @@ public class PlayerController : MonoBehaviour
 
             ClearHeldObject();
         }
+        audio.PlayPlaceitemdown();
     }
 
 
@@ -108,6 +113,7 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(5);
         canMove = false;
+        audio.StopAudio();
     }
 
     public ObjectType GetResourceType()
