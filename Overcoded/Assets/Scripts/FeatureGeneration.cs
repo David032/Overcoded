@@ -11,11 +11,17 @@ public class FeatureGeneration : MonoBehaviour
     public int featureNumber = 0;
     public GameObject popUp;
 
+    WorldSounds audio;
 
     GameObject eventPosition;
     bool hasRan = false;
     public Dictionary<int, GameObject> RequestedFeatures;
     GameObject lastFeature;
+
+    private void Start()
+    {
+        audio = GetComponent<WorldSounds>();
+    }
 
     public void createFeature() 
     {
@@ -37,6 +43,7 @@ public class FeatureGeneration : MonoBehaviour
         CreateFeatureWindow();
 
         featureNumber += 1;
+        audio.Playgibberish();
     }
 
     private void CreateFeatureWindow()
