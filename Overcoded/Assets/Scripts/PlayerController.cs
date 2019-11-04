@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     NavMeshAgent agent;
     Rigidbody rb;
     bool canMove;
+    bool isMoving;
     public SpriteRenderer spriteRenderer; //This has to be manually set as doing it via GetComponentInChildren gets the player's spriterenderer
 
 
@@ -27,6 +28,8 @@ public class PlayerController : MonoBehaviour
     public Material progressGold;
     public Material progressMud;
 
+    Vector3 lastPos;
+
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -36,6 +39,8 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         highlightCheck();
+        updateMoving();
+        MotionCheck();
 
         if (Input.GetMouseButtonDown(0) && canMove)
         {
@@ -60,7 +65,32 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    bool getMovableState() { return canMove; } //this might be useful for checking whether or not the player needs animating
+    private void MotionCheck()
+    {
+        if (isPlayerMoving())
+        {
+            //Animate Player here?
+        }
+        else
+        {
+            //Stop them animating?
+        }
+    }
+
+    private bool isPlayerMoving() { return isMoving; }
+    private void updateMoving()
+    {
+        if (lastPos != transform.position)
+        {
+            isMoving = true;
+        }
+        else
+        {
+            isMoving = false;
+        }
+        lastPos = transform.position;
+    }
+
     public void PickUpObject(Sprite sprite, ObjectType objectType, float progress = 0)
     {
         spriteRenderer.sprite = sprite;
