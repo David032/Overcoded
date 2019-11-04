@@ -8,8 +8,7 @@ public class Main_Menu_video : MonoBehaviour
 {
     public RawImage menu_bg;
     public VideoPlayer menu_video;
-    public AudioSource menu_audio_source;
-    
+
     void Start()
     {
         StartCoroutine(PlayVideo());
@@ -29,10 +28,4 @@ public class Main_Menu_video : MonoBehaviour
         menu_video.Play();
     }
 
-    //void PlayVideo()
-    //{
-    //    menu_video.Prepare();
-    //    menu_bg.texture = menu_video.texture;
-    //    menu_video.Play();
-    //}
 }
