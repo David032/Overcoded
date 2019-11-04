@@ -105,14 +105,6 @@ public class PlayerController : MonoBehaviour
         resourceProgress = 0;
     }
 
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Resource")
-        {
-            spriteRenderer.sprite = other.gameObject.GetComponentInChildren<SpriteRenderer>().sprite;
-        }
-    }
-
     private void OnMouseDown()
     {
         canMove = true;
