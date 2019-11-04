@@ -17,7 +17,11 @@ public class HighScoreTable : MonoBehaviour
 
         scoreTemplate.gameObject.SetActive(false);
 
-        //AddHighScoreEntry(275833, "DDD");
+        AddHighScoreEntry(275833, "JEG");
+        AddHighScoreEntry(2374, "JRE");
+        AddHighScoreEntry(903093, "RTJ");
+        AddHighScoreEntry(48379, "JRW");
+        AddHighScoreEntry(26448, "ADG");
 
         string jsonString = PlayerPrefs.GetString("highScoreTable");
         Highscores highscores = JsonUtility.FromJson<Highscores>(jsonString);
