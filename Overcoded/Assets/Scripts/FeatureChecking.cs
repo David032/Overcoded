@@ -31,10 +31,12 @@ public class FeatureChecking : MonoBehaviour
         ObjectType InsertedObject = other.gameObject.GetComponent<PlayerController>().GetResourceType();
         float Progress = other.gameObject.GetComponent<PlayerController>().GetResourceProgress();
 
+        print("Triggered");
         if (InsertedObject != ObjectType.NO_RESOURCE)
         {
             bool componentMatched = false;
             Feature featureBeingChecked = managerGenerator.Features[0];
+            print("fired");
 
             if (InsertedObject == featureBeingChecked.R1 && !featureBeingChecked.R1Complete)
             {
