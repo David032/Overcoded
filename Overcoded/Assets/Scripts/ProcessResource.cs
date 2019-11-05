@@ -21,6 +21,8 @@ public class ProcessResource : MonoBehaviour
     private void Start()
     {
         audio = GetComponent<AudioSource>();
+        progressBar.enabled = false;
+        progressBar1.enabled = false;
     }
 
     // Update is called once per frame
@@ -38,7 +40,7 @@ public class ProcessResource : MonoBehaviour
             progressBar1.enabled = true;
             progressAnimation.Play("Progress", 0, progress - 1.0f);
         }
-        if(progress > 1.0f && progress < 2.0f && !audio.isPlaying)
+        if(progress > 0.0f && progress < 2.0f && !audio.isPlaying)
         {
             audio.Play();
         }

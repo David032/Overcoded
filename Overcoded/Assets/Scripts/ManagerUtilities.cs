@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ManagerUtilities : MonoBehaviour
 {
@@ -13,6 +14,18 @@ public class ManagerUtilities : MonoBehaviour
     public Sprite completedAudio;
     public Sprite completedDesign;
     public Sprite completedArt;
+
+    public bool amInGame() 
+    {
+        if (SceneManager.GetActiveScene().handle == 1)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 
     void Start()
     {

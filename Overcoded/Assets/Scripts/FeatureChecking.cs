@@ -12,6 +12,8 @@ public class FeatureChecking : MonoBehaviour
     Sprite completedAudio;
     Sprite completedCode;
     Sprite completedDesign;
+
+    GameObject componentDrop;
     private void Start()
     {
         manager = GameObject.FindGameObjectWithTag("GameController");
@@ -20,6 +22,7 @@ public class FeatureChecking : MonoBehaviour
         completedAudio = manager.GetComponent<ManagerUtilities>().completedAudio;
         completedCode = manager.GetComponent<ManagerUtilities>().completedCode;
         completedDesign = manager.GetComponent<ManagerUtilities>().completedDesign;
+        componentDrop = GameObject.Find("ComponantDrop");
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -84,7 +87,9 @@ public class FeatureChecking : MonoBehaviour
 
 
             //PlaceHeldObject must hapen ater all information has been colected as it resets all values
-            other.gameObject.GetComponent<PlayerController>().PlaceHeldObject();
+            other.gameObject.GetComponent<PlayerController>().PlaceHeldObject(componentDrop);
+
+
             //Play animation, or if we run out of time, particle effect over it & pipeline
         }
     }

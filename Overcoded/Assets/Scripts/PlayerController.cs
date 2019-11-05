@@ -18,25 +18,62 @@ public class PlayerController : MonoBehaviour
     Rigidbody rb;
     AudioController audio;
     public bool canMove;
-    public SpriteRenderer spriteRenderer; //This has to be manually set as doing it via GetComponentInChildren gets the player's spriterenderer
+    public SpriteRenderer iconRenderer; //This has to be manually set as doing it via GetComponentInChildren gets the player's spriterenderer
+    public GameObject playerSprite;
+    SpriteRenderer playerRenderer;
+    bool isHighlighted;
 
 
-    ObjectType resourceType = ObjectType.NO_RESOURCE; 
+    public ObjectType resourceType = ObjectType.NO_RESOURCE; 
     float resourceProgress;
 
     public Material progressNone;
     public Material progressGold;
     public Material progressMud;
 
+    public bool isHolding = false;
+    public bool move;
+
+
+
+
+    public Sprite APlayer;
+    bool aPlayer;
+    public Sprite APLayerAlt;
+    public Sprite APLayerHighlighted;
+    public Sprite APLayerAltHighlighted;
+    public Sprite BPlayer;
+    bool bPlayer;
+    public Sprite BPLayerAlt;
+    public Sprite BPLayerHighlighted;
+    public Sprite BPLayerAltHighlighted;
+
+
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         rb = GetComponent<Rigidbody>();
         audio = GetComponent<AudioController>();
+        playerRenderer = playerSprite.GetComponent<SpriteRenderer>();
+
+        int rndNumber = Random.Range(0, 2);
+        if (rndNumber == 0)
+        {
+            playerRenderer.sprite = APlayer;
+            aPlayer = true;
+        }
+        if (rndNumber == 1)
+        {
+            playerRenderer.sprite = BPlayer;
+            bPlayer = true;
+        }
     }
+
+    public bool amHolding() { return isHolding; }
 
     void Update()
     {
+        spriteChange();
         if (Input.GetMouseButtonDown(0) && canMove)
         {
             RaycastHit hit;
@@ -49,58 +86,101 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+
+
+    private void spriteChange()
+    {
+        if (resourceType != ObjectType.NO_RESOURCE && aPlayer && !canMove)
+        {
+            playerRenderer.sprite = APLayerAlt;
+        }
+        if (resourceType == ObjectType.NO_RESOURCE && aPlayer && !canMove)
+        {
+            playerRenderer.sprite = APlayer;
+        }
+        if (resourceType == ObjectType.NO_RESOURCE && aPlayer && canMove)
+        {
+            playerRenderer.sprite = APLayerHighlighted;
+        }
+        if (resourceType != ObjectType.NO_RESOURCE && aPlayer && canMove)
+        {
+            playerRenderer.sprite = APLayerAltHighlighted;
+        }
+
+
+        if (resourceType != ObjectType.NO_RESOURCE && bPlayer && !canMove)
+        {
+            playerRenderer.sprite = BPLayerAlt;
+        }
+        if (resourceType == ObjectType.NO_RESOURCE && bPlayer && !canMove)
+        {
+            playerRenderer.sprite = BPlayer;
+        }
+        if(resourceType == ObjectType.NO_RESOURCE && bPlayer && canMove)
+        {
+            playerRenderer.sprite = BPLayerHighlighted;
+        }
+        if (resourceType != ObjectType.NO_RESOURCE && bPlayer && canMove)
+        {
+            playerRenderer.sprite = BPLayerAltHighlighted;
+        }
+    }
+
     public void PickUpObject(Sprite sprite, ObjectType objectType, float progress = 0)
     {
-        spriteRenderer.sprite = sprite;
-        resourceType = objectType;
-        resourceProgress = progress;
-        if (progress < 1.0f)
+        if (this.resourceType == ObjectType.NO_RESOURCE && !isHolding)
         {
-            spriteRenderer.material.Lerp(progressNone, progressGold, progress);
-        }
-        else
-        {
-            spriteRenderer.material.Lerp(progressGold, progressMud, progress - 1);
+            iconRenderer.sprite = sprite;
+            resourceType = objectType;
+            resourceProgress = progress;
+
+            if (progress < 1.0f)
+            {
+                iconRenderer.material.Lerp(progressNone, progressGold, progress);
+            }
+            else
+            {
+                iconRenderer.material.Lerp(progressGold, progressMud, progress - 1);
+            }
+            isHolding = true;
         }
         audio.PlayPickupitem();
     }
 
-    public void PlaceHeldObject()
+    public void PlaceHeldObject(GameObject dropPoint)
     {
         if(resourceType != ObjectType.NO_RESOURCE)
         {
             GameObject resource = new GameObject();
             resource.AddComponent<SpriteRenderer>();
-            resource.GetComponent<SpriteRenderer>().sprite = spriteRenderer.sprite;
-            resource.GetComponent<SpriteRenderer>().material = spriteRenderer.material;
+            resource.GetComponent<SpriteRenderer>().sprite = iconRenderer.sprite;
+            resource.GetComponent<SpriteRenderer>().material = iconRenderer.material;
 
             resource.AddComponent<ResourceState>();
             resource.GetComponent<ResourceState>().Set(resourceType, resourceProgress);
-
+            resource.AddComponent<MovePipeObject>();
             Quaternion rot = Quaternion.Euler(90,0,0);
-            resource.transform.position = transform.position;
+            resource.transform.position = dropPoint.transform.position;
             resource.transform.rotation = rot;
 
             ClearHeldObject();
+
+            
+
         }
+
         audio.PlayPlaceitemdown();
+       
     }
+
 
 
     public void ClearHeldObject()
     {
-        spriteRenderer.sprite = null;
+        iconRenderer.sprite = null;
         resourceType = ObjectType.NO_RESOURCE;
-
+        isHolding = false;
         resourceProgress = 0;
-    }
-
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Resource")
-        {
-            spriteRenderer.sprite = other.gameObject.GetComponentInChildren<SpriteRenderer>().sprite;
-        }
     }
 
     private void OnMouseDown()
