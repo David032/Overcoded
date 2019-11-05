@@ -11,6 +11,7 @@ public class GameController : MonoBehaviour
     FeatureGeneration generationSystem;
     bool generating;
 
+    bool muted;
     void Start()
     {
         generationSystem = GetComponent<FeatureGeneration>();
@@ -22,12 +23,14 @@ public class GameController : MonoBehaviour
         {
             StartCoroutine(EventTimer());
             StartCoroutine(GameTimer());
+            MuteSceen();
             generating = true;
         }
         else if (SceneManager.GetActiveScene().buildIndex != 1)
         {
             generating = false;
         }
+
     }
 
     IEnumerator EventTimer() 
@@ -42,5 +45,25 @@ public class GameController : MonoBehaviour
     {
         yield return new WaitForSeconds(GameTime);
         SceneManager.LoadScene(2);
+    }
+
+    public bool IsMuted()
+    {
+        return muted;
+    }
+
+    public void SetMuted(bool mute)
+    {
+        muted = mute;
+        MuteSceen();
+    }
+
+    void MuteSceen()
+    {
+        var audioSources = FindObjectsOfType<AudioSource>();
+        foreach (var item in audioSources)
+        {
+            item.mute = muted;
+        }
     }
 }

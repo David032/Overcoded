@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 public class MainMenu : MonoBehaviour
 {
-    public GameObject first_button;
+    public WorldSounds Audio;
     //public EventSystem es_menu;
     private int level_number;
 
@@ -21,24 +21,29 @@ public class MainMenu : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             level_number = 1;
+            Audio.PlayLevelChange();
             Debug.Log("Level 1 Load");
+           
         }
         if (level_number == 2)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
             level_number = 1;
+            Audio.PlayLevelChange();
             Debug.Log("Level 1 Load");
         }
         if (level_number == 3)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 3);
             level_number = 1;
+            Audio.PlayLevelChange();
             Debug.Log("Level 1 Load");
         }
     }
 
     public void QuitGame()
     {
+        Audio.PlayLevelChange();
         Application.Quit();
     }
 

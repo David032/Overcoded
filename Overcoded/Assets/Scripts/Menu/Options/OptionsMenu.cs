@@ -10,14 +10,14 @@ public class OptionsMenu : MonoBehaviour
 
     private void Start()
     {
-        //AudioManager = GameObject.FindGameObjectWithTag("AudioManager");
+        AudioManager = GameObject.FindGameObjectWithTag("GameController");
     }
     public void MusicEnabled()
     {
-        //AudioManager.GetComponent<MenuMusic>().SetNewState(true);
+        AudioManager.GetComponent<GameController>().SetMuted(false);
     }
     public void MusicDisabled()
     {
-        //AudioManager.GetComponent<MenuMusic>().SetNewState(false);
+        AudioManager.GetComponent<GameController>().SetMuted(true);
     }
 }
