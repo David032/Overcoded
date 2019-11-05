@@ -37,6 +37,8 @@ public class PlayerController : MonoBehaviour
     bool mute; //used only for creating placed object
     public GameObject PlacedItem;
 
+    bool isMoving;
+
     //Sprite Male - Downward
     public Sprite APlayer;
     bool aPlayer;
@@ -104,13 +106,53 @@ public class PlayerController : MonoBehaviour
                 agent.destination = hit.point;
                 audio.Playfootsteps();
                 playerMoveTo = agent.destination;
+                isMoving = true;
             }
+        }
+
+
+        if (isMoving == false)
+        {
+            gameObject.transform.eulerAngles = new Vector3(0, 0, 0);
+        }
+        if (isMoving)
+        {
+            StartCoroutine(walk());
+
         }
     }
 
+  
+    IEnumerator walk()
+{
+    bool left;
+    bool right;
+    left = true;
+    right = false;
 
+    while (isMoving)
+    {
 
-    private void spriteChange()
+        if (left)
+        {
+            gameObject.transform.eulerAngles = new Vector3(0, 5, 0);
+            yield return new WaitForSeconds(0.2f);
+            left = false;
+            right = true;
+        }
+
+        if (right)
+        {
+            gameObject.transform.eulerAngles = new Vector3(0, -5, 0);
+            yield return new WaitForSeconds(0.2f);
+            right = false;
+            left = true;
+        }
+    }
+
+}
+
+private void spriteChange()
     {
         if (!at_work)
         {
