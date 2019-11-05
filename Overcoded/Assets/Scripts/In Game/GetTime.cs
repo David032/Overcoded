@@ -25,6 +25,14 @@ public class GetTime : MonoBehaviour
         int game_min, game_sec;
         game_min = (game_timer_int / 60);
         game_sec = (game_timer_int % 60);
-        timer_text.text = game_min.ToString() + ":" + game_sec.ToString();
+        string str_min = game_min.ToString();
+        string str_sec = game_sec.ToString();
+
+        if (game_sec < 10)
+        {
+            str_sec = "0" + game_sec;
+        }
+
+        timer_text.text = str_min + ":" + str_sec;
     }
 }
