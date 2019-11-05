@@ -11,8 +11,6 @@ public class WorldSounds : MonoBehaviour
     public AudioClip Levelchange;
     public AudioClip Score;
     public AudioClip click;
-    public AudioClip intromusic;
-    public AudioClip Whooshpipe;
 
     public void SetNewState(bool music_state)
     {
@@ -48,16 +46,5 @@ public class WorldSounds : MonoBehaviour
         audio_source.clip = click;
         audio_source.Play();
 
-    }
-    public void PlayIntroMusic()
-    {
-        audio_source.clip = intromusic;
-        audio_source.Play();
-    }
-
-    public void PlayWhooshPipe()
-    {
-        audio_source.clip = Whooshpipe;
-        audio_source.Play();
     }
 }
