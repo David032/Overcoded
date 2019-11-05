@@ -11,6 +11,7 @@ public class GameController : MonoBehaviour
     FeatureGeneration generationSystem;
     bool generating;
 
+    bool muted;
     void Start()
     {
         generationSystem = GetComponent<FeatureGeneration>();
@@ -42,5 +43,15 @@ public class GameController : MonoBehaviour
     {
         yield return new WaitForSeconds(GameTime);
         SceneManager.LoadScene(2);
+    }
+
+    public bool IsMuted()
+    {
+        return muted;
+    }
+
+    public void SetMuted(bool mute)
+    {
+        muted = mute;
     }
 }
