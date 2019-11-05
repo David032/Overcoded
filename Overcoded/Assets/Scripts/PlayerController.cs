@@ -23,7 +23,6 @@ public class PlayerController : MonoBehaviour
     SpriteRenderer playerRenderer;
     bool isHighlighted;
     private bool at_work = false;
-    public Animator anims;
 
     public ObjectType resourceType = ObjectType.NO_RESOURCE; 
     float resourceProgress;
@@ -34,6 +33,7 @@ public class PlayerController : MonoBehaviour
 
     public bool isHolding = false;
     public bool move;
+    bool isMoving;
 
     bool mute; //used only for creating placed object
     public GameObject PlacedItem;
@@ -73,7 +73,6 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         audio = GetComponent<AudioController>();
         playerRenderer = playerSprite.GetComponent<SpriteRenderer>();
-        anims = playerSprite.GetComponent<Animator>();
 
         int rndNumber = Random.Range(0, 2);
         if (rndNumber == 0)
@@ -106,11 +105,50 @@ public class PlayerController : MonoBehaviour
                 agent.destination = hit.point;
                 audio.Playfootsteps();
                 playerMoveTo = agent.destination;
+                StartCoroutine(walk());
+                isMoving = true;
             }
+        }
+
+        if(isMoving == false)
+        {
+            gameObject.transform.eulerAngles = new Vector3(0, 0, 0);
+        }
+        if(isMoving)
+        {
+            StartCoroutine(walk());
+            
         }
     }
 
+    IEnumerator walk()
+    {
+        bool left;
+        bool right;
+        left = true;
+        right = false;
 
+        while (isMoving)
+        {
+
+            if (left)
+            {
+                gameObject.transform.eulerAngles = new Vector3(0, 5, 0);
+                yield return new WaitForSeconds(0.2f);
+                left = false;
+                right = true;
+            }
+
+            if (right)
+            {
+                gameObject.transform.eulerAngles = new Vector3(0, -5, 0);
+                yield return new WaitForSeconds(0.2f);
+                right = false;
+                left = true;
+            }
+        }
+
+    }
 
     private void spriteChange()
     {
@@ -119,13 +157,6 @@ public class PlayerController : MonoBehaviour
             //PlayerA - No Resource - Movement
             if (resourceType == ObjectType.NO_RESOURCE && aPlayer && canMove && transform.position.z < playerMoveTo.z)
             {
-                anims.enabled = true;
-                anims.SetBool("isBoyWalkingBackward", true);
-
-                //if (transform.position.z => playerMoveTo.z)
-                //{
-
-                //}
                 playerRenderer.sprite = APlayerHighlighted_up;
             }
 
@@ -278,6 +309,7 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(5);
         canMove = false;
+        isMoving = false;
         audio.StopAudio();
     }
 
