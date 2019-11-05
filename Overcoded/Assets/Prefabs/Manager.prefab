@@ -111,6 +111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FeatureTime: 20
+  GameTime: 135
 --- !u!114 &7940634914795501138
 MonoBehaviour:
   m_ObjectHideFlags: 0
