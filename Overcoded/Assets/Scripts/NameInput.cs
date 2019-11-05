@@ -8,7 +8,7 @@ public class NameInput : MonoBehaviour
     public GameObject nextButton;
     public GameObject backButton;
     public bool mouseButtonDown;
-    public char[] alphabet1 = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
+    public char[] alphabet1 = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
     public char[] alphabet2 = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
     public char[] alphabet3 = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
     int index1 = 0;
@@ -24,46 +24,10 @@ public class NameInput : MonoBehaviour
 
     private void Update()
     {
-      
-        
+          
             char currentLetter1 = alphabet1[index1];
             char currentLetter2 = alphabet2[index2];
             char currentLetter3 = alphabet3[index3];
-        
-        //if (mouseButtonDown == true && transform.Find("nextButton").gameObject)
-        //{
-        //    if (index < 26)
-        //    {
-        //        index++;
-        //    }
-        //    else
-        //    {
-        //        index = 26;
-        //    }
-        //}
-
-        //if (mouseButtonDown == true && transform.Find("backButton").gameObject)
-        //{
-        //    if (index > 0)
-        //    {
-        //        index--;
-        //    }
-
-        //    else
-        //    {
-        //        index = 0;
-        //    }
-        //}
-
-
-
-        //GameObject.Find("Letter1").GetComponent<Text>().text = alphabet[index].ToString(); //need to make tgese not repeat across all three scripts (letter1, letter2,letter3)
-        //GameObject.Find("Letter2").GetComponent<Text>().text = alphabet[index].ToString();
-        //GameObject.Find("Letter3").GetComponent<Text>().text = alphabet[index].ToString();
-
-
-
-
 
     }
     private void OnMouseDown()

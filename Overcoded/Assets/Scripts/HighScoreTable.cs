@@ -7,7 +7,6 @@ public class HighScoreTable : MonoBehaviour
 {
     private Transform scoreContainer;
     private Transform scoreTemplate;
-    //private List<HighScoreEntry> highScoreEntryList;
     private List<Transform> highscoreEntryTransformList;
 
     private void Awake()
@@ -17,11 +16,11 @@ public class HighScoreTable : MonoBehaviour
 
         scoreTemplate.gameObject.SetActive(false);
 
-        AddHighScoreEntry(275833, "JEG");
-        AddHighScoreEntry(2374, "JRE");
-        AddHighScoreEntry(903093, "RTJ");
-        AddHighScoreEntry(48379, "JRW");
-        AddHighScoreEntry(26448, "ADG");
+        //AddHighScoreEntry(275833, "JEG");
+        //AddHighScoreEntry(2374, "JRE");
+        //AddHighScoreEntry(903093, "RTJ");
+        //AddHighScoreEntry(48379, "JRW");
+        //AddHighScoreEntry(26448, "ADG");
 
         string jsonString = PlayerPrefs.GetString("highScoreTable");
         Highscores highscores = JsonUtility.FromJson<Highscores>(jsonString);
