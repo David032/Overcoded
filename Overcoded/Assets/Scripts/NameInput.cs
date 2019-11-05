@@ -13,8 +13,6 @@ public class NameInput : MonoBehaviour
     int index2 = 0;
     int index3 = 0;
 
-    public string playerName;
-
     public void Start() 
     {
 
@@ -29,7 +27,10 @@ public class NameInput : MonoBehaviour
             char currentLetter2 = alphabet[index2];
             char currentLetter3 = alphabet[index3];
 
-        playerName = currentLetter1.ToString() + currentLetter2.ToString() + currentLetter3.ToString();
+
+        GameObject manager = GameObject.FindGameObjectWithTag("GameController");
+        GameController game = manager.GetComponent<GameController>();
+        game.SetPlayerName(currentLetter1.ToString() + currentLetter2.ToString() + currentLetter3.ToString());
     }
     private void OnMouseDown()
     {
