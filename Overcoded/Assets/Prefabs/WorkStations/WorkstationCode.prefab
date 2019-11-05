@@ -87,10 +87,35 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2423930074107926922, guid: 2d66bc21bbdfdbf41b90d8ccdd9104b4,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7538649484092920411, guid: 2d66bc21bbdfdbf41b90d8ccdd9104b4,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ecabcd774eecf784f9a4f03bacd9dc4f, type: 2}
+    - target: {fileID: 427862011406738344, guid: 2d66bc21bbdfdbf41b90d8ccdd9104b4,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 2750172925323675507, guid: 2d66bc21bbdfdbf41b90d8ccdd9104b4,
         type: 3}
       propertyPath: m_Name
       value: WorkstationCode
+      objectReference: {fileID: 0}
+    - target: {fileID: -5707149836098907486, guid: 2d66bc21bbdfdbf41b90d8ccdd9104b4,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 0a8e995b5cfe10945a11357c1234d020, type: 3}
+    - target: {fileID: 2750172925323675519, guid: 2d66bc21bbdfdbf41b90d8ccdd9104b4,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2750172925323675516, guid: 2d66bc21bbdfdbf41b90d8ccdd9104b4,
         type: 3}
@@ -163,11 +188,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -5707149836098907486, guid: 2d66bc21bbdfdbf41b90d8ccdd9104b4,
-        type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 0a8e995b5cfe10945a11357c1234d020, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d66bc21bbdfdbf41b90d8ccdd9104b4, type: 3}
 --- !u!4 &5960282234482890147 stripped
