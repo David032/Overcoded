@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     public GameObject playerSprite;
     SpriteRenderer playerRenderer;
     bool isHighlighted;
-
+    int PlacedItem;
 
     public ObjectType resourceType = ObjectType.NO_RESOURCE; 
     float resourceProgress;
@@ -205,4 +205,6 @@ public class PlayerController : MonoBehaviour
     {
         return resourceProgress;
     }
+
+
 }
