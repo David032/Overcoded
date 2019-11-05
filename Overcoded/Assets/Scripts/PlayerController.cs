@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     bool isHighlighted;
 
 
-    public ObjectType resourceType = ObjectType.NO_RESOURCE; 
+    public ObjectType resourceType = ObjectType.NO_RESOURCE;
     float resourceProgress;
 
     public Material progressNone;
@@ -47,6 +47,10 @@ public class PlayerController : MonoBehaviour
     public Sprite BPLayerAlt;
     public Sprite BPLayerHighlighted;
     public Sprite BPLayerAltHighlighted;
+
+    //Testing
+    Vector3 playerMoveTo;
+
 
 
     void Start()
@@ -82,6 +86,7 @@ public class PlayerController : MonoBehaviour
             {
                 agent.destination = hit.point;
                 audio.Playfootsteps();
+                playerMoveTo = agent.destination;
             }
         }
     }
@@ -116,7 +121,7 @@ public class PlayerController : MonoBehaviour
         {
             playerRenderer.sprite = BPlayer;
         }
-        if(resourceType == ObjectType.NO_RESOURCE && bPlayer && canMove)
+        if (resourceType == ObjectType.NO_RESOURCE && bPlayer && canMove)
         {
             playerRenderer.sprite = BPLayerHighlighted;
         }
@@ -149,7 +154,7 @@ public class PlayerController : MonoBehaviour
 
     public void PlaceHeldObject(GameObject dropPoint)
     {
-        if(resourceType != ObjectType.NO_RESOURCE)
+        if (resourceType != ObjectType.NO_RESOURCE)
         {
             GameObject resource = new GameObject();
             resource.AddComponent<SpriteRenderer>();
@@ -159,22 +164,34 @@ public class PlayerController : MonoBehaviour
             resource.AddComponent<ResourceState>();
             resource.GetComponent<ResourceState>().Set(resourceType, resourceProgress);
             resource.AddComponent<MovePipeObject>();
-            Quaternion rot = Quaternion.Euler(90,0,0);
+            Quaternion rot = Quaternion.Euler(90, 0, 0);
             resource.transform.position = dropPoint.transform.position;
             resource.transform.rotation = rot;
 
             ClearHeldObject();
 
-            
+
 
         }
 
         audio.PlayPlaceitemdown();
-       
+
     }
 
+    private void PlayerMoveToPoint()
+    {
+        
+        Debug.Log(playerSprite.transform);
+        if (playerSprite.transform.position.y < playerMoveTo.y)
+        {
+           // playerRenderer.sprite = new Sprite (girl1_backward);
+            //playerRenderer.sprite = spriteImage;
+        }
+        else if (playerSprite.transform.position.y > playerMoveTo.y)
+        {
 
-
+        }
+    }
     public void ClearHeldObject()
     {
         iconRenderer.sprite = null;
