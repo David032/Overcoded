@@ -22,7 +22,8 @@ public class PlayerController : MonoBehaviour
     public GameObject playerSprite;
     SpriteRenderer playerRenderer;
     bool isHighlighted;
-    private bool at_work = false; 
+    private bool at_work = false;
+    public Animator anims;
 
     public ObjectType resourceType = ObjectType.NO_RESOURCE; 
     float resourceProgress;
@@ -72,6 +73,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         audio = GetComponent<AudioController>();
         playerRenderer = playerSprite.GetComponent<SpriteRenderer>();
+        anims = playerSprite.GetComponent<Animator>();
 
         int rndNumber = Random.Range(0, 2);
         if (rndNumber == 0)
@@ -117,6 +119,13 @@ public class PlayerController : MonoBehaviour
             //PlayerA - No Resource - Movement
             if (resourceType == ObjectType.NO_RESOURCE && aPlayer && canMove && transform.position.z < playerMoveTo.z)
             {
+                anims.enabled = true;
+                anims.SetBool("isBoyWalkingBackward", true);
+
+                //if (transform.position.z => playerMoveTo.z)
+                //{
+
+                //}
                 playerRenderer.sprite = APlayerHighlighted_up;
             }
 
@@ -145,6 +154,8 @@ public class PlayerController : MonoBehaviour
             {
                 playerRenderer.sprite = APlayerAltHighlighted;
             }
+
+
 
             //PlayerB - Resource - Movement
             if (resourceType != ObjectType.NO_RESOURCE && bPlayer && canMove && transform.position.z < playerMoveTo.z)

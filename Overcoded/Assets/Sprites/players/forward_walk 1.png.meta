@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: 6ef5ea445662ed04f8d1506e903acf31
+guid: 7c6ce829bc7c3594caea3923c42458b5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3221206769695732199
-    second: boy1_back_walk_armsup_0
+      213: 7124800626606085969
+    second: forward_walk 1_0
   - first:
-      213: 1499215466083474134
-    second: boy1_back_walk_armsup_1
+      213: 4305746337049813433
+    second: forward_walk 1_1
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -89,18 +89,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
     buildTarget: Windows Store Apps
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -149,6 +137,18 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
     buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -164,13 +164,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: boy1_back_walk_armsup_0
+      name: forward_walk 1_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 140
-        height: 200
+        height: 199
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -178,17 +178,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e7b30b155a49f814c946b3576fa26635
-      internalID: -3221206769695732199
+      spriteID: 188c6b21faa981044bf374b72a0d3b35
+      internalID: 7124800626606085969
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: boy1_back_walk_armsup_1
+      name: forward_walk 1_1
       rect:
         serializedVersion: 2
-        x: 140
+        x: 141
         y: 0
         width: 140
         height: 200
@@ -199,8 +199,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 20ca24b906359d1408635ed807341e5e
-      internalID: 1499215466083474134
+      spriteID: 990f5016eb9fa9c4f8dbaea5de851185
+      internalID: 4305746337049813433
       vertices: []
       indices: 
       edges: []
@@ -208,7 +208,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 237fb4a143527484ab8947304c446d87
     internalID: 0
     vertices: []
     indices: 
