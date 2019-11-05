@@ -92,6 +92,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: WorkstationArt
       objectReference: {fileID: 0}
+    - target: {fileID: -5707149836098907486, guid: 2d66bc21bbdfdbf41b90d8ccdd9104b4,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 0fafd57e4d6958544b12833963bda305, type: 3}
+    - target: {fileID: 2750172925323675519, guid: 2d66bc21bbdfdbf41b90d8ccdd9104b4,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2750172925323675516, guid: 2d66bc21bbdfdbf41b90d8ccdd9104b4,
         type: 3}
       propertyPath: outputResourceSprite
@@ -163,11 +173,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -5707149836098907486, guid: 2d66bc21bbdfdbf41b90d8ccdd9104b4,
-        type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: 0fafd57e4d6958544b12833963bda305, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d66bc21bbdfdbf41b90d8ccdd9104b4, type: 3}
 --- !u!4 &3546445893814524191 stripped
