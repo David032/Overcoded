@@ -227,7 +227,7 @@ RectTransform:
   m_GameObject: {fileID: 43352578}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 1641049788}
   m_Father: {fileID: 455578774}
@@ -282,9 +282,7 @@ MonoBehaviour:
   nextButton: {fileID: 0}
   backButton: {fileID: 0}
   mouseButtonDown: 0
-  alphabet1: 4100420043004400450046004700480049004a004b004c004d004e004f0050005100520053005400550056005700580059005a00
-  alphabet2: 4100420043004400450046004700480049004a004b004c004d004e004f0050005100520053005400550056005700580059005a00
-  alphabet3: 4100420043004400450046004700480049004a004b004c004d004e004f0050005100520053005400550056005700580059005a00
+  alphabet: 4100420043004400450046004700480049004a004b004c004d004e004f0050005100520053005400550056005700580059005a00
 --- !u!4 &285858069
 Transform:
   m_ObjectHideFlags: 0
@@ -1713,7 +1711,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 500, y: 500}
+  m_SizeDelta: {x: 1000, y: 600}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1548821855
 MonoBehaviour:
@@ -1977,7 +1975,7 @@ RectTransform:
   m_GameObject: {fileID: 2023389114}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 1548821854}
   - {fileID: 30560263}
