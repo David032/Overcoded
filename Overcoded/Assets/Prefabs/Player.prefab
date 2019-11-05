@@ -207,13 +207,27 @@ MonoBehaviour:
   isHolding: 0
   move: 0
   APlayer: {fileID: 21300000, guid: 4979d0bc6ae88e146aac8b5db2da5f8b, type: 3}
-  APLayerAlt: {fileID: 21300000, guid: 056dcac9987196f459a59860565539c6, type: 3}
-  APLayerHighlighted: {fileID: 0}
-  APLayerAltHighlighted: {fileID: 0}
+  APlayerAlt: {fileID: 21300000, guid: 056dcac9987196f459a59860565539c6, type: 3}
+  APlayerHighlighted: {fileID: 21300000, guid: 1052d82c02989b64ea9fc03f7684c9cc, type: 3}
+  APlayerAltHighlighted: {fileID: 21300000, guid: 04f7eddfef2c6e34aa864ca224e64219,
+    type: 3}
+  APlayer_up: {fileID: 21300000, guid: f1dc1791e0506d845ab8c4a15909e084, type: 3}
+  APlayerAlt_up: {fileID: 21300000, guid: 6d13779e06b62b2408b9338fb329d39d, type: 3}
+  APlayerHighlighted_up: {fileID: 21300000, guid: 614a7667fd2ce7444a0be76636c9e707,
+    type: 3}
+  APlayerAltHighlighted_up: {fileID: 21300000, guid: ce9d1b7e0327e2d45ab55edc11637275,
+    type: 3}
   BPlayer: {fileID: 21300000, guid: 7aa0d6ea637539240953bac0edc43354, type: 3}
-  BPLayerAlt: {fileID: 21300000, guid: 9e4aa3ee35eea0148b5e4527ce1bc889, type: 3}
-  BPLayerHighlighted: {fileID: 0}
-  BPLayerAltHighlighted: {fileID: 0}
+  BPlayerAlt: {fileID: 21300000, guid: 9e4aa3ee35eea0148b5e4527ce1bc889, type: 3}
+  BPlayerHighlighted: {fileID: 21300000, guid: 4b6e9a8164c42f045a4555cb36da3c58, type: 3}
+  BPlayerAltHighlighted: {fileID: 21300000, guid: e099110889694dd43be658faf800ec84,
+    type: 3}
+  BPlayer_up: {fileID: 21300000, guid: 06380c47ad268ab41b99d0243bffa3d1, type: 3}
+  BPlayerAlt_up: {fileID: 21300000, guid: a29ba1e532265cf4193658390e7aaa4c, type: 3}
+  BPlayerHighlighted_up: {fileID: 21300000, guid: 586e87c266938144c965891d8eb0b016,
+    type: 3}
+  BPlayerAltHighlighted_up: {fileID: 21300000, guid: 26b91d6d9a453f3419a88b1bae09cb2b,
+    type: 3}
 --- !u!114 &5633025140998801984
 MonoBehaviour:
   m_ObjectHideFlags: 0
