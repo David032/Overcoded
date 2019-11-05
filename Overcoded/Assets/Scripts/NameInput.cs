@@ -8,12 +8,12 @@ public class NameInput : MonoBehaviour
     public GameObject nextButton;
     public GameObject backButton;
     public bool mouseButtonDown;
-    public char[] alphabet1 = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
-    public char[] alphabet2 = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
-    public char[] alphabet3 = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
+    public char[] alphabet = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
     int index1 = 0;
     int index2 = 0;
     int index3 = 0;
+
+    public string playerName;
 
     public void Start() 
     {
@@ -25,10 +25,11 @@ public class NameInput : MonoBehaviour
     private void Update()
     {
           
-            char currentLetter1 = alphabet1[index1];
-            char currentLetter2 = alphabet2[index2];
-            char currentLetter3 = alphabet3[index3];
+            char currentLetter1 = alphabet[index1];
+            char currentLetter2 = alphabet[index2];
+            char currentLetter3 = alphabet[index3];
 
+        playerName = currentLetter1.ToString() + currentLetter2.ToString() + currentLetter3.ToString();
     }
     private void OnMouseDown()
     {
@@ -55,7 +56,7 @@ public class NameInput : MonoBehaviour
             index1 = 25;
         }
 
-        GameObject.Find("Letter1").GetComponent<Text>().text = alphabet1[index1].ToString();
+        GameObject.Find("Letter1").GetComponent<Text>().text = alphabet[index1].ToString();
     }
 
     public void backButton1Pressed()
@@ -70,7 +71,7 @@ public class NameInput : MonoBehaviour
             index1 = 0;
         }
 
-        GameObject.Find("Letter1").GetComponent<Text>().text = alphabet1[index1].ToString();
+        GameObject.Find("Letter1").GetComponent<Text>().text = alphabet[index1].ToString();
     }
 
     public void nextButton2Pressed()
@@ -84,7 +85,7 @@ public class NameInput : MonoBehaviour
             index2 = 25;
         }
 
-        GameObject.Find("Letter2").GetComponent<Text>().text = alphabet2[index2].ToString();
+        GameObject.Find("Letter2").GetComponent<Text>().text = alphabet[index2].ToString();
     }
 
     public void backButton2Pressed()
@@ -99,7 +100,7 @@ public class NameInput : MonoBehaviour
             index2 = 0;
         }
 
-        GameObject.Find("Letter2").GetComponent<Text>().text = alphabet2[index2].ToString();
+        GameObject.Find("Letter2").GetComponent<Text>().text = alphabet[index2].ToString();
     }
 
     public void nextButton3Pressed()
@@ -113,7 +114,7 @@ public class NameInput : MonoBehaviour
             index3 = 25;
         }
 
-        GameObject.Find("Letter3").GetComponent<Text>().text = alphabet3[index3].ToString();
+        GameObject.Find("Letter3").GetComponent<Text>().text = alphabet[index3].ToString();
     }
 
     public void backButton3Pressed()
@@ -128,7 +129,7 @@ public class NameInput : MonoBehaviour
             index3 = 0;
         }
 
-        GameObject.Find("Letter3").GetComponent<Text>().text = alphabet3[index3].ToString();
+        GameObject.Find("Letter3").GetComponent<Text>().text = alphabet[index3].ToString();
     }
 }
 

@@ -10,6 +10,9 @@ public class HighScoreTableNew : MonoBehaviour
     private Transform scoreTemplate;
     private List<Transform> highScoreEntryTransformList;
     private Highscores highscores;
+    GameObject manager;
+    FeatureGeneration managerGenerator;
+    NameInput nameinuput;
     private string fileName = "highscore.json";
     private string filePath;
 
@@ -21,10 +24,15 @@ public class HighScoreTableNew : MonoBehaviour
         scoreContainer = transform.Find("highScoreTable");
         scoreTemplate = scoreContainer.Find("tableTemplate");
 
+        manager = GameObject.FindGameObjectWithTag("GameController");
+        managerGenerator = manager.GetComponent<FeatureGeneration>();
+        nameinuput = FindObjectOfType<NameInput>();
+        int playerScore = (int)managerGenerator.totalScore;
+
         scoreTemplate.gameObject.SetActive(false);
 
 
-        //AddHighScoreEntry(32675, "HFJ");
+        //AddHighScoreEntry(playerScore, nameinuput.playerName);
 
         LoadHighScore();
         //string jsonstring = PlayerPrefs.GetString("highscore");                   //Need to load Json file here.
