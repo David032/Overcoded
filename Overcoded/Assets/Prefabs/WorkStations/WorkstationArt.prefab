@@ -118,6 +118,11 @@ PrefabInstance:
       propertyPath: inputResourceType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2750172925323675516, guid: 2d66bc21bbdfdbf41b90d8ccdd9104b4,
+        type: 3}
+      propertyPath: progressSpeed
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2750172925323675517, guid: 2d66bc21bbdfdbf41b90d8ccdd9104b4,
         type: 3}
       propertyPath: m_LocalPosition.x
