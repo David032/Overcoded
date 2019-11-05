@@ -6,7 +6,6 @@ using UnityEngine.EventSystems;
 
 public class MainMenu : MonoBehaviour
 {
-    public GameObject first_button;
     //public EventSystem es_menu;
     private int level_number;
 
