@@ -35,15 +35,9 @@ public class PHHighScore : MonoBehaviour
         Transform scoreTransform = Instantiate(scoreTemplate, container);
         scoreTransform.gameObject.SetActive(true);
 
-        int score = (int) managerGenerator.totalScore; //Random.Range(0, 10000);
+        int score = (int) managerGenerator.totalScore;
         scoreTransform.Find("finalScoreText").GetComponent<Text>().text = score.ToString();
     }
 
 
-
-    [System.Serializable]
-    private class HighScoreEntry
-    {
-        public int score;
-    }
 }
