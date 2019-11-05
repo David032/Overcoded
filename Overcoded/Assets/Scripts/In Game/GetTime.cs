@@ -11,7 +11,6 @@ public class GetTime : MonoBehaviour
     float game_time;
 
 
-
     void Start()
     {
         manager = GameObject.FindGameObjectWithTag("GameController");
