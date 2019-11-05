@@ -40,10 +40,4 @@ public class PHHighScore : MonoBehaviour
     }
 
 
-
-    [System.Serializable]
-    private class HighScoreEntry
-    {
-        public int score;
-    }
 }
