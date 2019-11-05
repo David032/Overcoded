@@ -87,27 +87,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2750172925323675507, guid: 2d66bc21bbdfdbf41b90d8ccdd9104b4,
-        type: 3}
-      propertyPath: m_Name
-      value: WorkstationDesignes
-      objectReference: {fileID: 0}
-    - target: {fileID: 2750172925323675516, guid: 2d66bc21bbdfdbf41b90d8ccdd9104b4,
-        type: 3}
-      propertyPath: outputResourceSprite
-      value: 
-      objectReference: {fileID: 21300000, guid: db5574d67e9e53e49876f59a56abf049,
-        type: 3}
-    - target: {fileID: 2750172925323675516, guid: 2d66bc21bbdfdbf41b90d8ccdd9104b4,
-        type: 3}
-      propertyPath: outputResourceType
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 2750172925323675516, guid: 2d66bc21bbdfdbf41b90d8ccdd9104b4,
-        type: 3}
-      propertyPath: inputResourceType
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 2750172925323675517, guid: 2d66bc21bbdfdbf41b90d8ccdd9104b4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -163,11 +142,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2750172925323675507, guid: 2d66bc21bbdfdbf41b90d8ccdd9104b4,
+        type: 3}
+      propertyPath: m_Name
+      value: WorkstationDesignes
+      objectReference: {fileID: 0}
+    - target: {fileID: 2750172925323675516, guid: 2d66bc21bbdfdbf41b90d8ccdd9104b4,
+        type: 3}
+      propertyPath: outputResourceSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: db5574d67e9e53e49876f59a56abf049,
+        type: 3}
+    - target: {fileID: 2750172925323675516, guid: 2d66bc21bbdfdbf41b90d8ccdd9104b4,
+        type: 3}
+      propertyPath: outputResourceType
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2750172925323675516, guid: 2d66bc21bbdfdbf41b90d8ccdd9104b4,
+        type: 3}
+      propertyPath: inputResourceType
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: -5707149836098907486, guid: 2d66bc21bbdfdbf41b90d8ccdd9104b4,
         type: 3}
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 8300000, guid: 485fd8256995ffd4bb75eb2de69c626e, type: 3}
+    - target: {fileID: -5707149836098907486, guid: 2d66bc21bbdfdbf41b90d8ccdd9104b4,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.665
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d66bc21bbdfdbf41b90d8ccdd9104b4, type: 3}
 --- !u!4 &5519876121928551203 stripped

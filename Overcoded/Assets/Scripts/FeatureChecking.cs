@@ -88,6 +88,8 @@ public class FeatureChecking : MonoBehaviour
 
             //PlaceHeldObject must hapen ater all information has been colected as it resets all values
             other.gameObject.GetComponent<PlayerController>().PlaceHeldObject(componentDrop);
+
+
             //Play animation, or if we run out of time, particle effect over it & pipeline
         }
     }

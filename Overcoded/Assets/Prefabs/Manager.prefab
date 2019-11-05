@@ -79,6 +79,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   totalScore: 0
   position: {x: 30.5, y: 0, z: 1}
+  Features: []
   featureNumber: 0
   popUp: {fileID: 1984448968228229148, guid: 33dced336923c5b4cb862e2be365affa, type: 3}
 --- !u!114 &8552415887892378690
@@ -125,7 +126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audio_source: {fileID: 5892738795351997231}
   Gears: {fileID: 8300000, guid: fa6fa3cab26f1014a93ceab8a6960fcc, type: 3}
-  gibberish: {fileID: 8300000, guid: 193bf55e879ac444c8326f06c1ac3c9c, type: 3}
+  gibberish: {fileID: 8300000, guid: aa1f07a0d40dd6f4e9ad89af988e85f3, type: 3}
   Levelchange: {fileID: 8300000, guid: 2f802e1c5f9cb1a48867f5f69d9870da, type: 3}
   Score: {fileID: 8300000, guid: 63d2f1709814ffb43b6d687bdbf2aa71, type: 3}
 --- !u!82 &5892738795351997231
@@ -140,7 +141,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 0
   Mute: 0

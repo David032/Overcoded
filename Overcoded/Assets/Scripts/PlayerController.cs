@@ -19,7 +19,9 @@ public class PlayerController : MonoBehaviour
     AudioController audio;
     public bool canMove;
     public SpriteRenderer iconRenderer; //This has to be manually set as doing it via GetComponentInChildren gets the player's spriterenderer
+    public GameObject playerSprite;
     SpriteRenderer playerRenderer;
+    bool isHighlighted;
 
 
     public ObjectType resourceType = ObjectType.NO_RESOURCE; 
@@ -30,19 +32,29 @@ public class PlayerController : MonoBehaviour
     public Material progressMud;
 
     public bool isHolding = false;
+    public bool move;
+
+
+
 
     public Sprite APlayer;
     bool aPlayer;
     public Sprite APLayerAlt;
+    public Sprite APLayerHighlighted;
+    public Sprite APLayerAltHighlighted;
     public Sprite BPlayer;
     bool bPlayer;
     public Sprite BPLayerAlt;
+    public Sprite BPLayerHighlighted;
+    public Sprite BPLayerAltHighlighted;
+
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         rb = GetComponent<Rigidbody>();
         audio = GetComponent<AudioController>();
+        playerRenderer = playerSprite.GetComponent<SpriteRenderer>();
 
         int rndNumber = Random.Range(0, 2);
         if (rndNumber == 0)
@@ -62,7 +74,6 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         spriteChange();
-
         if (Input.GetMouseButtonDown(0) && canMove)
         {
             RaycastHit hit;
@@ -75,23 +86,43 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+
+
     private void spriteChange()
     {
-        if (resourceType != ObjectType.NO_RESOURCE && aPlayer)
+        if (resourceType != ObjectType.NO_RESOURCE && aPlayer && !canMove)
         {
             playerRenderer.sprite = APLayerAlt;
         }
-        else if (resourceType == ObjectType.NO_RESOURCE && aPlayer)
+        if (resourceType == ObjectType.NO_RESOURCE && aPlayer && !canMove)
         {
             playerRenderer.sprite = APlayer;
         }
-        if (resourceType != ObjectType.NO_RESOURCE && bPlayer)
+        if (resourceType == ObjectType.NO_RESOURCE && aPlayer && canMove)
+        {
+            playerRenderer.sprite = APLayerHighlighted;
+        }
+        if (resourceType != ObjectType.NO_RESOURCE && aPlayer && canMove)
+        {
+            playerRenderer.sprite = APLayerAltHighlighted;
+        }
+
+
+        if (resourceType != ObjectType.NO_RESOURCE && bPlayer && !canMove)
         {
             playerRenderer.sprite = BPLayerAlt;
         }
-        else if (resourceType == ObjectType.NO_RESOURCE && bPlayer)
+        if (resourceType == ObjectType.NO_RESOURCE && bPlayer && !canMove)
         {
             playerRenderer.sprite = BPlayer;
+        }
+        if(resourceType == ObjectType.NO_RESOURCE && bPlayer && canMove)
+        {
+            playerRenderer.sprite = BPLayerHighlighted;
+        }
+        if (resourceType != ObjectType.NO_RESOURCE && bPlayer && canMove)
+        {
+            playerRenderer.sprite = BPLayerAltHighlighted;
         }
     }
 
@@ -127,15 +158,21 @@ public class PlayerController : MonoBehaviour
 
             resource.AddComponent<ResourceState>();
             resource.GetComponent<ResourceState>().Set(resourceType, resourceProgress);
-
+            resource.AddComponent<MovePipeObject>();
             Quaternion rot = Quaternion.Euler(90,0,0);
             resource.transform.position = dropPoint.transform.position;
             resource.transform.rotation = rot;
 
             ClearHeldObject();
+
+            
+
         }
+
         audio.PlayPlaceitemdown();
+       
     }
+
 
 
     public void ClearHeldObject()
