@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     public GameObject playerSprite;
     SpriteRenderer playerRenderer;
     bool isHighlighted;
+    private bool at_work = false; 
 
     public ObjectType resourceType = ObjectType.NO_RESOURCE; 
     float resourceProgress;
@@ -36,33 +37,34 @@ public class PlayerController : MonoBehaviour
     bool mute; //used only for creating placed object
     public GameObject PlacedItem;
 
-
+    //Sprite Male - Downward
     public Sprite APlayer;
     bool aPlayer;
-    public Sprite APLayerAlt;
-    public Sprite APLayerHighlighted;
-    public Sprite APLayerAltHighlighted;
+    public Sprite APlayerAlt;
+    public Sprite APlayerHighlighted;
+    public Sprite APlayerAltHighlighted;
 
+    //Sprite Male - Upward
     public Sprite APlayer_up;
-    public Sprite APLayerAlt_up;
-    public Sprite APLayerHighlighted_up;
-    public Sprite APLayerAltHighlighted_up;
+    public Sprite APlayerAlt_up;
+    public Sprite APlayerHighlighted_up;
+    public Sprite APlayerAltHighlighted_up;
 
+    //Sprite Female - Downward
     public Sprite BPlayer;
     bool bPlayer;
-    public Sprite BPLayerAlt;
-    public Sprite BPLayerHighlighted;
-    public Sprite BPLayerAltHighlighted;
+    public Sprite BPlayerAlt;
+    public Sprite BPlayerHighlighted;
+    public Sprite BPlayerAltHighlighted;
 
+    //Sprite Female - Upward
     public Sprite BPlayer_up;
-    public Sprite BPLayerAlt_up;
-    public Sprite BPLayerHighlighted_up;
-    public Sprite BPLayerAltHighlighted_up;
+    public Sprite BPlayerAlt_up;
+    public Sprite BPlayerHighlighted_up;
+    public Sprite BPlayerAltHighlighted_up;
 
     //Testing
     Vector3 playerMoveTo;
-
-
 
     void Start()
     {
@@ -110,89 +112,90 @@ public class PlayerController : MonoBehaviour
 
     private void spriteChange()
     {
-        //PlayerA - No Resource - Movement
-        if (resourceType == ObjectType.NO_RESOURCE && aPlayer && canMove && transform.position.z < playerMoveTo.z)
+        if (!at_work)
         {
-            playerRenderer.sprite = APLayerHighlighted_up;
-        }
+            //PlayerA - No Resource - Movement
+            if (resourceType == ObjectType.NO_RESOURCE && aPlayer && canMove && transform.position.z < playerMoveTo.z)
+            {
+                playerRenderer.sprite = APlayerHighlighted_up;
+            }
 
-        if (resourceType == ObjectType.NO_RESOURCE && aPlayer && canMove && transform.position.z > playerMoveTo.z)
+            if (resourceType == ObjectType.NO_RESOURCE && aPlayer && canMove && transform.position.z > playerMoveTo.z)
+            {
+                playerRenderer.sprite = APlayerHighlighted;
+            }
+
+            //PlayerB - No Resource - Movement
+            if (resourceType == ObjectType.NO_RESOURCE && bPlayer && canMove && transform.position.z < playerMoveTo.z)
+            {
+                playerRenderer.sprite = BPlayerHighlighted_up;
+            }
+
+            if (resourceType == ObjectType.NO_RESOURCE && bPlayer && canMove && transform.position.z > playerMoveTo.z)
+            {
+                playerRenderer.sprite = BPlayerHighlighted;
+            }
+
+            //PlayerA - Resource - Movement
+            if (resourceType != ObjectType.NO_RESOURCE && aPlayer && canMove && transform.position.z < playerMoveTo.z)
+            {
+                playerRenderer.sprite = APlayerAltHighlighted_up;
+            }
+            if (resourceType != ObjectType.NO_RESOURCE && aPlayer && canMove && transform.position.z > playerMoveTo.z)
+            {
+                playerRenderer.sprite = APlayerAltHighlighted;
+            }
+
+            //PlayerB - Resource - Movement
+            if (resourceType != ObjectType.NO_RESOURCE && bPlayer && canMove && transform.position.z < playerMoveTo.z)
+            {
+                playerRenderer.sprite = BPlayerAltHighlighted_up;
+            }
+            if (resourceType != ObjectType.NO_RESOURCE && bPlayer && canMove && transform.position.z > playerMoveTo.z)
+            {
+                playerRenderer.sprite = BPlayerAltHighlighted;
+            }
+
+            //PlayerA - Not Moveable
+            if (resourceType != ObjectType.NO_RESOURCE && aPlayer && !canMove)
+            {
+                playerRenderer.sprite = APlayerAlt;
+            }
+            if (resourceType == ObjectType.NO_RESOURCE && aPlayer && !canMove)
+            {
+                playerRenderer.sprite = APlayer;
+            }
+
+            //PlayerB - Not Moveable
+            if (resourceType != ObjectType.NO_RESOURCE && bPlayer && !canMove)
+            {
+                playerRenderer.sprite = BPlayerAlt;
+            }
+            if (resourceType == ObjectType.NO_RESOURCE && bPlayer && !canMove)
+            {
+                playerRenderer.sprite = BPlayer;
+            }
+        }
+        else if (at_work)
         {
-            playerRenderer.sprite = APLayerHighlighted;
+            if (resourceType != ObjectType.NO_RESOURCE && aPlayer && canMove)
+            {
+                playerRenderer.sprite = APlayerHighlighted_up;
+            }
+            if (resourceType != ObjectType.NO_RESOURCE && bPlayer && canMove)
+            {
+                playerRenderer.sprite = BPlayerHighlighted_up;
+            }
+
+            if (resourceType == ObjectType.NO_RESOURCE && aPlayer && !canMove)
+            {
+                playerRenderer.sprite = APlayer_up;
+            }
+            if (resourceType == ObjectType.NO_RESOURCE && bPlayer && !canMove)
+            {
+                playerRenderer.sprite = BPlayer_up;
+            }
         }
-
-        //PlayerB - No Resource - Movement
-        if (resourceType == ObjectType.NO_RESOURCE && bPlayer && canMove && transform.position.z < playerMoveTo.z)
-        {
-            playerRenderer.sprite = BPLayerHighlighted_up;
-        }
-
-        if (resourceType == ObjectType.NO_RESOURCE && bPlayer && canMove && transform.position.z > playerMoveTo.z)
-        {
-            playerRenderer.sprite = BPLayerHighlighted;
-        }
-
-        //PlayerA - Resource - Movement
-        if (resourceType != ObjectType.NO_RESOURCE && aPlayer && canMove && transform.position.z < playerMoveTo.z)
-        {
-            playerRenderer.sprite = APLayerAltHighlighted_up;
-        }
-        if (resourceType != ObjectType.NO_RESOURCE && aPlayer && canMove && transform.position.z > playerMoveTo.z)
-        {
-            playerRenderer.sprite = APLayerAltHighlighted;
-        }
-
-        //PlayerB - Resource - Movement
-        if (resourceType != ObjectType.NO_RESOURCE && bPlayer && canMove && transform.position.z < playerMoveTo.z)
-        {
-            playerRenderer.sprite = BPLayerAltHighlighted_up;
-        }
-        if (resourceType != ObjectType.NO_RESOURCE && bPlayer && canMove && transform.position.z > playerMoveTo.z) 
-        {
-            playerRenderer.sprite = BPLayerAltHighlighted;
-        }
-
-        //PlayerA - Not Moveable
-        if (resourceType != ObjectType.NO_RESOURCE && aPlayer && !canMove)
-        {
-            playerRenderer.sprite = APLayerAlt;
-        }
-        if (resourceType == ObjectType.NO_RESOURCE && aPlayer && !canMove)
-        {
-            playerRenderer.sprite = APlayer;
-        }
-
-        //PlayerB - Not Moveable
-        if (resourceType != ObjectType.NO_RESOURCE && bPlayer && !canMove)
-        {
-            playerRenderer.sprite = BPLayerAlt;
-        }
-        if (resourceType == ObjectType.NO_RESOURCE && bPlayer && !canMove)
-        {
-            playerRenderer.sprite = BPlayer;
-        }
-
-        //if (resourceType == ObjectType.NO_RESOURCE && aPlayer && canMove)
-        //{
-        //    playerRenderer.sprite = APLayerHighlighted;
-        //}
-        //if (resourceType != ObjectType.NO_RESOURCE && aPlayer && canMove)
-        //{
-        //    playerRenderer.sprite = APLayerAltHighlighted;
-        //}
-
-
-
-
-
-        //if (resourceType == ObjectType.NO_RESOURCE && bPlayer && canMove)
-        //{
-        //    playerRenderer.sprite = BPLayerHighlighted;
-        //}
-        //if (resourceType != ObjectType.NO_RESOURCE && bPlayer && canMove)
-        //{
-        //    playerRenderer.sprite = BPLayerAltHighlighted;
-        //}
     }
 
     public void PickUpObject(Sprite sprite, ObjectType objectType, float progress = 0)
@@ -239,11 +242,9 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private void PlayerMoveToPoint()
+    public void PlayerAtWorkstation(bool at_station)
     {
-        
-        Debug.Log(playerSprite.transform);
-       
+        at_work = at_station;
     }
     public void ClearHeldObject()
     {
