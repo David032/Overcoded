@@ -160,6 +160,9 @@ public class PlayerController : MonoBehaviour
 
             Material placedMaterial = new Material(iconRenderer.material);
 
+            placedMaterial.color = iconRenderer.material.color;
+            placedMaterial.shader = iconRenderer.material.shader;
+
             resource.GetComponent<SpriteRenderer>().sprite = iconRenderer.sprite;
             resource.GetComponent<SpriteRenderer>().material = placedMaterial;
 
@@ -173,8 +176,6 @@ public class PlayerController : MonoBehaviour
         audio.PlayPlaceitemdown();
        
     }
-
-
 
     public void ClearHeldObject()
     {
