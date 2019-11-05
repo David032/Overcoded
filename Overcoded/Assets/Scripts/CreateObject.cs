@@ -11,7 +11,6 @@ public class CreateObject : MonoBehaviour
     {       
         if (other.GetComponent<PlayerController>())
         {
-            other.GetComponent<PlayerController>().ClearHeldObject();
             if (other.GetComponent<PlayerController>().GetResourceType() == ObjectType.NO_RESOURCE)
             {
                 other.GetComponent<PlayerController>().PickUpObject(resourceSprite, resourceType);

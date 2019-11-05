@@ -200,21 +200,24 @@ public class PlayerController : MonoBehaviour
 
     public void PickUpObject(Sprite sprite, ObjectType objectType, float progress = 0)
     {
-        if (this.resourceType == ObjectType.NO_RESOURCE && !isHolding)
+        if (resourceType == ObjectType.NO_RESOURCE && !isHolding)
         {
             iconRenderer.sprite = sprite;
             resourceType = objectType;
             resourceProgress = progress;
 
+            Material placedMaterial = new Material(iconRenderer.material);
+
             if (progress < 1.0f)
             {
-                iconRenderer.material.Lerp(progressNone, progressGold, progress);
+                placedMaterial.Lerp(progressNone, progressGold, progress);
             }
             else
             {
-                iconRenderer.material.Lerp(progressGold, progressMud, progress - 1);
+                placedMaterial.Lerp(progressGold, progressMud, progress - 1);
             }
             isHolding = true;
+            iconRenderer.material = placedMaterial;
         }
         audio.PlayPickupitem();
     }
