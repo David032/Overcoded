@@ -2,34 +2,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.IO;
 
 public class HighScoreTableNew : MonoBehaviour
 {
     private Transform scoreContainer;
     private Transform scoreTemplate;
     private List<Transform> highScoreEntryTransformList;
+    private Highscores highscores;
+    private string fileName = "highscore.json";
+    private string filePath;
 
     private void Awake()
     {
+
+        filePath = Path.Combine(Application.dataPath, fileName);
+
         scoreContainer = transform.Find("highScoreTable");
         scoreTemplate = scoreContainer.Find("tableTemplate");
 
         scoreTemplate.gameObject.SetActive(false);
 
-        //highScoreEntryList = new List<HighScoreEntry>()
-        //{
-        //    new HighScoreEntry{ score = 267432, name = "AGN"},
-        //    new HighScoreEntry{ score = 7634, name = "GEH"},
-        //    new HighScoreEntry{ score = 75254, name = "SDB"},
-        //    new HighScoreEntry{ score = 89286, name = "ERJ"},
-        //    new HighScoreEntry{ score = 29612, name = "JSD"},
-        //    new HighScoreEntry{ score = 90386, name = "FGW"},
-        //};
 
-        //AddHighScoreEntry(929526, "TUT");
+        //AddHighScoreEntry(32675, "HFJ");
 
-        string jsonstring = PlayerPrefs.GetString("highscore");
-        Highscores highscores = JsonUtility.FromJson<Highscores>(jsonstring);
+        LoadHighScore();
+        //string jsonstring = PlayerPrefs.GetString("highscore");                   //Need to load Json file here.
+        //Highscores highscores = JsonUtility.FromJson<Highscores>(jsonstring);
 
         //List Sorter
 
@@ -45,6 +44,13 @@ public class HighScoreTableNew : MonoBehaviour
                 }
             }
         }
+
+        while (highscores.highScoreEntryList.Count > 10)
+        {
+            highscores.highScoreEntryList.RemoveAt(10);
+        }
+
+        SaveHighScore();
 
         highScoreEntryTransformList = new List<Transform>();
         foreach (HighScoreEntry highScoreEntry in highscores.highScoreEntryList)
@@ -126,18 +132,52 @@ public class HighScoreTableNew : MonoBehaviour
         HighScoreEntry highScoreEntry = new HighScoreEntry { score = score, name = name };
 
         //load saved scores
-        string jsonstring = PlayerPrefs.GetString("highscore");
-        Highscores highscores = JsonUtility.FromJson<Highscores>(jsonstring);
+        LoadHighScore();
+        //string jsonstring = PlayerPrefs.GetString("highscore");                     //Need to load Json file here.
+        //Highscores highscores = JsonUtility.FromJson<Highscores>(jsonstring);
 
         //add new scores
         highscores.highScoreEntryList.Add(highScoreEntry);
 
         //save scores
-        string json = JsonUtility.ToJson(highscores);
-        PlayerPrefs.SetString("highscore", json);
-        PlayerPrefs.Save();
+        SaveHighScore();
+        //string json = JsonUtility.ToJson(highscores);
+        //PlayerPrefs.SetString("highscore", json);                       //Need to save Json file here.
+        //PlayerPrefs.Save();
+
+        
     }
 
+    private void SaveHighScore()
+    {
+        string json = JsonUtility.ToJson(highscores,true);
+
+        if(!File.Exists(filePath))
+        {
+            File.Create(filePath).Dispose();
+        }
+        File.WriteAllText(filePath, json);
+
+    }
+
+    private void LoadHighScore()
+    {
+        string json;
+
+        if (File.Exists(filePath))
+        {
+            json = File.ReadAllText(filePath);
+            highscores = JsonUtility.FromJson<Highscores>(json);
+        }
+        else
+        {
+            Debug.Log("File is missing: " + filePath);
+        }
+
+    }
+
+
+    [System.Serializable]
     private class Highscores
     {
         public List<HighScoreEntry> highScoreEntryList;

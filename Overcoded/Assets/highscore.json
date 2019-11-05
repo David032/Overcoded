@@ -1,13 +1,44 @@
 {
- "HighScore":
-[
-{
-"Name": "AAA",
-"Score": 1234
-},
-{
-"Name": "ABA",
-"Score": 6969
-}
-]
+    "highScoreEntryList": [
+        {
+            "score": 73885535,
+            "name": "GGF"
+        },
+        {
+            "score": 929526,
+            "name": "TUT"
+        },
+        {
+            "score": 929526,
+            "name": "TUT"
+        },
+        {
+            "score": 927326,
+            "name": "TTL"
+        },
+        {
+            "score": 927326,
+            "name": "TTL"
+        },
+        {
+            "score": 918536,
+            "name": "EHF"
+        },
+        {
+            "score": 243867,
+            "name": "JFE"
+        },
+        {
+            "score": 72854,
+            "name": "JGF"
+        },
+        {
+            "score": 32675,
+            "name": "HFJ"
+        },
+        {
+            "score": 32674,
+            "name": "HFJ"
+        }
+    ]
 }
