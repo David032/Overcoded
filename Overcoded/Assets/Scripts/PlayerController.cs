@@ -265,7 +265,7 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator countdown() 
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(2.5f);
         canMove = false;
         audio.StopAudio();
     }
