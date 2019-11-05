@@ -12,7 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/GameLevel.unity
     guid: 5d36a9a2fcbce3c49a4f19b5d0aac7fe
   - enabled: 1
-    guid: 20f15be90817d144da5f10f2d25932e3
     path: Assets/Scenes/PHHighScore.unity
-
+    guid: 20f15be90817d144da5f10f2d25932e3
   m_configObjects: {}
