@@ -158,8 +158,10 @@ public class PlayerController : MonoBehaviour
             Quaternion rot = Quaternion.Euler(90,0,0);
             GameObject resource = Instantiate(PlacedItem, dropPoint.transform.position, rot);
 
+            Material placedMaterial = new Material(iconRenderer.material);
+
             resource.GetComponent<SpriteRenderer>().sprite = iconRenderer.sprite;
-            resource.GetComponent<SpriteRenderer>().material = iconRenderer.material;
+            resource.GetComponent<SpriteRenderer>().material = placedMaterial;
 
             resource.GetComponent<ResourceState>().Set(resourceType, resourceProgress);
 
