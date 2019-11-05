@@ -71,6 +71,7 @@ public class ProcessResource : MonoBehaviour
                     progress = 2.0f;
                 }
             }
+            other.GetComponent<PlayerController>().PlayerAtWorkstation(true);
         }
     }
 
@@ -85,6 +86,10 @@ public class ProcessResource : MonoBehaviour
             progressBar.color = new Color32( 24, 170, 24, 255);
             progress = 0;
             audio.Stop();
+        }
+        if (other.tag == "Player")
+        {
+            other.GetComponent<PlayerController>().PlayerAtWorkstation(false);
         }
     }
 }
