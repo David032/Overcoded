@@ -23,12 +23,14 @@ public class GameController : MonoBehaviour
         {
             StartCoroutine(EventTimer());
             StartCoroutine(GameTimer());
+            MuteSceen();
             generating = true;
         }
         else if (SceneManager.GetActiveScene().buildIndex != 1)
         {
             generating = false;
         }
+
     }
 
     IEnumerator EventTimer() 
@@ -53,5 +55,15 @@ public class GameController : MonoBehaviour
     public void SetMuted(bool mute)
     {
         muted = mute;
+        MuteSceen();
+    }
+
+    void MuteSceen()
+    {
+        var audioSources = FindObjectsOfType<AudioSource>();
+        foreach (var item in audioSources)
+        {
+            item.mute = muted;
+        }
     }
 }

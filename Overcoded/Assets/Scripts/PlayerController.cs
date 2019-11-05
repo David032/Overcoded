@@ -22,7 +22,6 @@ public class PlayerController : MonoBehaviour
     public GameObject playerSprite;
     SpriteRenderer playerRenderer;
     bool isHighlighted;
-    int PlacedItem;
 
     public ObjectType resourceType = ObjectType.NO_RESOURCE; 
     float resourceProgress;
@@ -34,7 +33,8 @@ public class PlayerController : MonoBehaviour
     public bool isHolding = false;
     public bool move;
 
-
+    bool mute; //used only for creating placed object
+    public GameObject PlacedItem;
 
 
     public Sprite APlayer;
@@ -67,6 +67,10 @@ public class PlayerController : MonoBehaviour
             playerRenderer.sprite = BPlayer;
             bPlayer = true;
         }
+
+
+        GameObject manager = GameObject.FindGameObjectWithTag("GameController");
+        mute = manager.GetComponent<GameController>().IsMuted();
     }
 
     public bool amHolding() { return isHolding; }
@@ -151,22 +155,17 @@ public class PlayerController : MonoBehaviour
     {
         if(resourceType != ObjectType.NO_RESOURCE)
         {
-            GameObject resource = new GameObject();
-            resource.AddComponent<SpriteRenderer>();
+            Quaternion rot = Quaternion.Euler(90,0,0);
+            GameObject resource = Instantiate(PlacedItem, dropPoint.transform.position, rot);
+
             resource.GetComponent<SpriteRenderer>().sprite = iconRenderer.sprite;
             resource.GetComponent<SpriteRenderer>().material = iconRenderer.material;
 
-            resource.AddComponent<ResourceState>();
             resource.GetComponent<ResourceState>().Set(resourceType, resourceProgress);
-            resource.AddComponent<MovePipeObject>();
-            Quaternion rot = Quaternion.Euler(90,0,0);
-            resource.transform.position = dropPoint.transform.position;
-            resource.transform.rotation = rot;
+
+            resource.GetComponent<AudioSource>().mute = mute;
 
             ClearHeldObject();
-
-            
-
         }
 
         audio.PlayPlaceitemdown();
