@@ -6,6 +6,7 @@ public class MovePipeObject : MonoBehaviour
 {
     bool moving;
     
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +29,7 @@ public class MovePipeObject : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
         StartCoroutine(deleteItem());
         moving = true;
+        GetComponent<AudioSource>().Play();
     }
 
     IEnumerator deleteItem()

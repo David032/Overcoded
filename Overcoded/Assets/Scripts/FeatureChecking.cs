@@ -8,6 +8,8 @@ public class FeatureChecking : MonoBehaviour
     GameObject manager;
     FeatureGeneration managerGenerator;
 
+    public WorldSounds Audio;
+
     Sprite completedArt;
     Sprite completedAudio;
     Sprite completedCode;
@@ -88,7 +90,7 @@ public class FeatureChecking : MonoBehaviour
 
             //PlaceHeldObject must hapen ater all information has been colected as it resets all values
             other.gameObject.GetComponent<PlayerController>().PlaceHeldObject(componentDrop);
-
+            Audio.PlayWhooshPipe();
 
             //Play animation, or if we run out of time, particle effect over it & pipeline
         }
