@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PHHighScore.unity
     guid: 20f15be90817d144da5f10f2d25932e3
+  - enabled: 1
+    path: Assets/Scenes/InsertName.unity
+    guid: 9934e863647efe94982e37f72d84ebef
+  - enabled: 1
+    path: Assets/Scenes/HighScore.unity
+    guid: 73a3eb9cf46578a4aa2339637c1ca72d
   m_configObjects: {}
