@@ -11,6 +11,8 @@ public class GameController : MonoBehaviour
     FeatureGeneration generationSystem;
     bool generating;
 
+    string playerName;
+
     bool muted;
     void Start()
     {
@@ -25,6 +27,7 @@ public class GameController : MonoBehaviour
             StartCoroutine(GameTimer());
             MuteSceen();
             generating = true;
+            playerName = "";
         }
         else if (SceneManager.GetActiveScene().buildIndex != 1)
         {
@@ -44,7 +47,7 @@ public class GameController : MonoBehaviour
     IEnumerator GameTimer()
     {
         yield return new WaitForSeconds(GameTime);
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(3);
     }
 
     public bool IsMuted()
@@ -65,5 +68,15 @@ public class GameController : MonoBehaviour
         {
             item.mute = muted;
         }
+    }
+
+    public string GetPlayerName()
+    {
+        return playerName;
+    }
+
+    public void SetPlayerName(string newName)
+    {
+        playerName = newName;
     }
 }

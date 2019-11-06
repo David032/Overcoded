@@ -37,6 +37,8 @@ public class PlayerController : MonoBehaviour
     bool mute; //used only for creating placed object
     public GameObject PlacedItem;
 
+    bool isMoving;
+
     //Sprite Male - Downward
     public Sprite APlayer;
     bool aPlayer;
@@ -104,13 +106,53 @@ public class PlayerController : MonoBehaviour
                 agent.destination = hit.point;
                 audio.Playfootsteps();
                 playerMoveTo = agent.destination;
+                isMoving = true;
             }
+        }
+
+
+        if (isMoving == false)
+        {
+            gameObject.transform.eulerAngles = new Vector3(0, 0, 0);
+        }
+        if (isMoving)
+        {
+            StartCoroutine(walk());
+
         }
     }
 
+  
+    IEnumerator walk()
+{
+    bool left;
+    bool right;
+    left = true;
+    right = false;
 
+    while (isMoving)
+    {
 
-    private void spriteChange()
+        if (left)
+        {
+            gameObject.transform.eulerAngles = new Vector3(0, 5, 0);
+            yield return new WaitForSeconds(0.2f);
+            left = false;
+            right = true;
+        }
+
+        if (right)
+        {
+            gameObject.transform.eulerAngles = new Vector3(0, -5, 0);
+            yield return new WaitForSeconds(0.2f);
+            right = false;
+            left = true;
+        }
+    }
+
+}
+
+private void spriteChange()
     {
         if (!at_work)
         {
@@ -200,21 +242,24 @@ public class PlayerController : MonoBehaviour
 
     public void PickUpObject(Sprite sprite, ObjectType objectType, float progress = 0)
     {
-        if (this.resourceType == ObjectType.NO_RESOURCE && !isHolding)
+        if (resourceType == ObjectType.NO_RESOURCE && !isHolding)
         {
             iconRenderer.sprite = sprite;
             resourceType = objectType;
             resourceProgress = progress;
 
+            Material placedMaterial = new Material(iconRenderer.material);
+
             if (progress < 1.0f)
             {
-                iconRenderer.material.Lerp(progressNone, progressGold, progress);
+                placedMaterial.Lerp(progressNone, progressGold, progress);
             }
             else
             {
-                iconRenderer.material.Lerp(progressGold, progressMud, progress - 1);
+                placedMaterial.Lerp(progressGold, progressMud, progress - 1);
             }
             isHolding = true;
+            iconRenderer.material = placedMaterial;
         }
         audio.PlayPickupitem();
     }
@@ -265,9 +310,10 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator countdown() 
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(2.5f);
         canMove = false;
         audio.StopAudio();
+        isMoving = false;
     }
 
     public ObjectType GetResourceType()

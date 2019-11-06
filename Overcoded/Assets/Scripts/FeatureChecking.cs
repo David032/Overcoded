@@ -8,8 +8,6 @@ public class FeatureChecking : MonoBehaviour
     GameObject manager;
     FeatureGeneration managerGenerator;
 
-    public WorldSounds Audio;
-
     Sprite completedArt;
     Sprite completedAudio;
     Sprite completedCode;
@@ -21,7 +19,6 @@ public class FeatureChecking : MonoBehaviour
         manager = GameObject.FindGameObjectWithTag("GameController");
         managerGenerator = manager.GetComponent<FeatureGeneration>();
         completedArt = manager.GetComponent<ManagerUtilities>().completedArt;
-        completedAudio = manager.GetComponent<ManagerUtilities>().completedAudio;
         completedCode = manager.GetComponent<ManagerUtilities>().completedCode;
         completedDesign = manager.GetComponent<ManagerUtilities>().completedDesign;
         componentDrop = GameObject.Find("ComponantDrop");
