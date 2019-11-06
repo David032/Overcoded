@@ -16,7 +16,7 @@ public class HighScoreTableNew : MonoBehaviour
     private void Awake()
     {
 
-        filePath = Path.Combine(Application.dataPath, fileName);
+        filePath = Path.Combine(Application.streamingAssetsPath, fileName);
 
         scoreContainer = transform.Find("highScoreTable");
         scoreTemplate = scoreContainer.Find("tableTemplate");
