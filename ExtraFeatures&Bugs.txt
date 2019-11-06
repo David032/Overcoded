@@ -1,0 +1,3 @@
+splash screen logo
+dynamic character addition
+change buttons from player to difficulty/worker count
