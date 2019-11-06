@@ -313,6 +313,7 @@ private void spriteChange()
         yield return new WaitForSeconds(2.5f);
         canMove = false;
         audio.StopAudio();
+        isMoving = false;
     }
 
     public ObjectType GetResourceType()
